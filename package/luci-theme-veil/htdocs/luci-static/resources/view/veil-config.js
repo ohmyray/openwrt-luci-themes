@@ -44,7 +44,7 @@ __webpack_require__.d(__webpack_exports__, {
   main: () => (/* binding */ main)
 });
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https+++codeload.github.com+LazuliKao+luci-types+tar.gz+90a8e40b9_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
 const Fragment = Symbol.for("jsx.fragment");
 function jsx_factory_e(e, t) {
     let { children: n, ...r } = null === t || "object" != typeof t || Array.isArray(t) ? {} : t, o = function e(t, n = []) {
@@ -89,7 +89,7 @@ function jsxDEV(t, n) {
     return jsx_factory_e(t, n);
 }
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https+++codeload.github.com+LazuliKao+luci-types+tar.gz+90a8e40b9_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
 
 
 ;// CONCATENATED MODULE: ./web/resources/utils/update.ts
@@ -137,41 +137,41 @@ function matchI18nAsset(t, e, l) {
     return null;
 }
 async function fetchLatestRelease(t, e, l = [], s) {
-    let a = {};
-    s && (a.Authorization = `token ${s}`);
-    let r = await fetch("nightly" === t ? "https://api.github.com/repos/LazuliKao/luci-theme-veil/releases/tags/nightly" : "https://api.github.com/repos/LazuliKao/luci-theme-veil/releases/latest", {
-        headers: a
-    }), n = await r.json();
-    if (!r.ok) {
-        let t = n?.message ? `: ${n.message}` : "";
-        throw new GitHubAPIError(`GitHub API returned status ${r.status}${t}`, r.status);
+    let i = {};
+    s && (i.Authorization = `token ${s}`);
+    let a = await fetch("nightly" === t ? "https://api.github.com/repos/LazuliKao/luci-theme-veil/releases/tags/nightly" : "https://api.github.com/repos/LazuliKao/luci-theme-veil/releases/latest", {
+        headers: i
+    }), r = await a.json();
+    if (!a.ok) {
+        let t = r?.message ? `: ${r.message}` : "";
+        throw new GitHubAPIError(`GitHub API returned status ${a.status}${t}`, a.status);
     }
-    let i = n.assets || [], o = null, u = [];
-    for (let t of i){
+    let o = r.assets || [], n = null, u = [];
+    for (let t of o){
         let l = String(t.name || "");
-        "apk" === e && /^luci-theme-veil-[0-9].*\.apk$/.test(l) ? o = t : "ipk" === e && /^luci-theme-veil_[^/]+\.ipk$/.test(l) && (o = t);
+        "apk" === e && /^luci-theme-veil-[0-9].*\.apk$/.test(l) ? n = t : "ipk" === e && /^luci-theme-veil_[^/]+\.ipk$/.test(l) && (n = t);
     }
     for (let t of l){
-        let l = matchI18nAsset(i, t, e);
+        let l = matchI18nAsset(o, t, e);
         l && !u.includes(l) && u.push(l);
     }
     return {
-        tag_name: String(n.tag_name || ""),
-        published_at: String(n.published_at || ""),
-        body: String(n.body || ""),
-        html_url: String(n.html_url || ""),
-        package_asset: o,
+        tag_name: String(r.tag_name || ""),
+        published_at: String(r.published_at || ""),
+        body: String(r.body || ""),
+        html_url: String(r.html_url || ""),
+        package_asset: n,
         i18n_assets: u
     };
 }
 
 ;// CONCATENATED MODULE: ./web/resources/view/veil-config/tabs/about.tsx
 
-let about_l = L.form, about_n = "https://ghfast.top/";
+let about_l = L.form, about_i = "https://ghfast.top/";
 
 let about_u = about_l.DummyValue.extend({
     renderWidget: (l, u, p)=>{
-        let h = "1.0.1", b = "ipk", f = [], g = jsxs("div", {
+        let h = "1.0.1", b = "ipk", g = [], f = jsxs("div", {
             class: "fluent-about-logo",
             children: [
                 jsx("img", {
@@ -266,7 +266,7 @@ let about_u = about_l.DummyValue.extend({
                     children: _("Nightly Channel (Prerelease)")
                 })
             ]
-        }), w = jsxs("select", {
+        }), v = jsxs("select", {
             class: "cbi-input-select",
             id: "update-method-select",
             children: [
@@ -279,7 +279,7 @@ let about_u = about_l.DummyValue.extend({
                     children: _("Backend (GHProxy Acceleration)")
                 })
             ]
-        }), v = jsx("button", {
+        }), w = jsx("button", {
             class: "btn cbi-button cbi-button-action",
             type: "button",
             children: _("Check for updates")
@@ -300,7 +300,7 @@ let about_u = about_l.DummyValue.extend({
                         m
                     ]
                 }),
-                v
+                w
             ]
         }), x = jsx("div", {
             class: "veil-update-status",
@@ -318,10 +318,10 @@ let about_u = about_l.DummyValue.extend({
         }), $ = jsx("div", {
             class: "veil-update-card",
             style: "display: none"
-        }), F = jsxs("div", {
+        }), P = jsxs("div", {
             class: "fluent-about-manager",
             children: [
-                g,
+                f,
                 y,
                 jsx("hr", {
                     class: "fluent-about-divider"
@@ -335,21 +335,21 @@ let about_u = about_l.DummyValue.extend({
                 C,
                 S
             ]
-        }), P = (e, t = "info")=>{
+        }), A = (e, t = "info")=>{
             dom.content(x, [
                 document.createTextNode(e)
             ]), x.className = `veil-update-status status-${t}`, x.style.display = "block";
-        }, A = (e, t, a)=>{
+        }, z = (e, t, a)=>{
             C.style.display = "block", S.style.display = "block", T.style.width = `${t}%`, T.className = `fluent-progress-bar__fill fill-${e}`, dom.content(S, [
                 document.createTextNode(`${a} (${t}%)`)
             ]);
-        }, z = ()=>{
+        }, F = ()=>{
             C.style.display = "none", S.style.display = "none";
         };
         (async ()=>{
             try {
                 let e = await callGetVersion();
-                h = e.version, b = e.pkg_type, f = e.installed_i18n || (e.i18n_zh_cn_installed ? [
+                h = e.version, b = e.pkg_type, g = e.installed_i18n || (e.i18n_zh_cn_installed ? [
                     "zh-cn"
                 ] : []);
                 let t = y.querySelector(".fluent-about-current-version");
@@ -357,16 +357,16 @@ let about_u = about_l.DummyValue.extend({
                 let a = y.querySelector(".fluent-about-pkg-type");
                 a && (a.textContent = "apk" === b ? "APK (OpenWrt 25.12+)" : "IPK (OpenWrt 24.10)");
             } catch (e) {
-                console.error("Failed to fetch version", e), P(_("Failed to fetch current theme version."), "error");
+                console.error("Failed to fetch version", e), A(_("Failed to fetch current theme version."), "error");
             }
         })();
         let N = async (l)=>{
             let s = m.value;
             try {
-                let c = await fetchLatestRelease(s, b, f, l);
-                console.log(c), v.disabled = !1;
-                let u = h.replace(/^v/, "").trim(), p = c.tag_name.replace(/^v/, "").trim(), g = L.naturalCompare(p, u) > 0, y = !g && "nightly" !== s;
-                if (y ? P(_("Your theme is up to date!"), "success") : P(g ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), g ? "warn" : "info"), !c.package_asset) return void P(_("No matching package asset found for your system architecture in this release."), "error");
+                let c = await fetchLatestRelease(s, b, g, l);
+                console.log(c), w.disabled = !1;
+                let u = h.replace(/^v/, "").trim(), p = c.tag_name.replace(/^v/, "").trim(), f = L.naturalCompare(p, u) > 0, y = !f && "nightly" !== s;
+                if (y ? A(_("Your theme is up to date!"), "success") : A(f ? _("A new version is available!") : _("Nightly build available (reinstallation check)."), f ? "warn" : "info"), !c.package_asset) return void A(_("No matching package asset found for your system architecture in this release."), "error");
                 let k = c.body ? c.body : "", x = jsx("button", {
                     class: "btn cbi-button cbi-button-save",
                     type: "button",
@@ -394,23 +394,23 @@ let about_u = about_l.DummyValue.extend({
                     class: "veil-update-footer",
                     style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: 15px; flex-wrap: wrap;",
                     children: [
-                        w,
+                        v,
                         x
                     ]
                 })), dom.content($, T), $.style.display = "block", x.addEventListener("click", async ()=>{
                     let l = c.package_asset;
-                    if (!l) return void P(_("No matching package asset found for your system architecture in this release."), "error");
-                    x.disabled = !0, m.disabled = !0, w.disabled = !0, v.disabled = !0, P(_("Starting update process..."), "info");
+                    if (!l) return void A(_("No matching package asset found for your system architecture in this release."), "error");
+                    x.disabled = !0, m.disabled = !0, v.disabled = !0, w.disabled = !0, A(_("Starting update process..."), "info");
                     let s = c.i18n_assets || [], d = null, u = [];
                     for (let e of (l.digest?.startsWith("sha256:") ? d = l.digest.replace("sha256:", "") : (console.warn("Unable to determine expected package hash from digest. Skipping verification."), d = "skip"), s))e.digest?.startsWith("sha256:") ? u.push(e.digest.replace("sha256:", "")) : u.push("skip");
                     let p = async ()=>{
-                        let c = w.value.includes("ghproxy");
-                        P(_("Starting backend download..."), "info"), A("download", 0, _("Downloading on router"));
-                        let p = c ? about_n + l.browser_download_url : l.browser_download_url, h = s.map((e)=>c ? about_n + e.browser_download_url : e.browser_download_url).join(" "), b = await callStartDownload(p, h.split(" ")[0] || "", h);
+                        let c = v.value.includes("ghproxy");
+                        A(_("Starting backend download..."), "info"), z("download", 0, _("Downloading on router"));
+                        let p = c ? about_i + l.browser_download_url : l.browser_download_url, h = s.map((e)=>c ? about_i + e.browser_download_url : e.browser_download_url).join(" "), b = await callStartDownload(p, h.split(" ")[0] || "", h);
                         if (0 !== b.result) throw Error(b.message || "Failed to start router download.");
                         for(;;){
-                            let e = await callCheckDownload(), t = e.size || 0, a = s.reduce((e, t)=>e + (t.size || 0), 0), n = l.size + a, i = n > 0 ? Math.min(Math.round(t / n * 100), 100) : 0;
-                            if (A("download", i, `${_("Downloading on router")} (${(t / 1024).toFixed(0)} / ${(n / 1024).toFixed(0)} KB)`), !e.running) if (0 !== e.code) throw Error("Router background download failed or file is empty.");
+                            let e = await callCheckDownload(), t = e.size || 0, a = s.reduce((e, t)=>e + (t.size || 0), 0), i = l.size + a, r = i > 0 ? Math.min(Math.round(t / i * 100), 100) : 0;
+                            if (z("download", r, `${_("Downloading on router")} (${(t / 1024).toFixed(0)} / ${(i / 1024).toFixed(0)} KB)`), !e.running) if (0 !== e.code) throw Error("Router background download failed or file is empty.");
                             else break;
                             await new Promise((e)=>setTimeout(e, 1000));
                         }
@@ -446,10 +446,10 @@ let about_u = about_l.DummyValue.extend({
                                 ]
                             }));
                         })) throw Error(_("Installation cancelled by user."));
-                        P(_("Triggering installation on router..."), "info"), A("install", 100, _("Installing package"));
-                        let f = await callDoInstall(d, u[0] || "", u.join(" "));
-                        if (0 !== f.result) throw Error(f.message || "Router installation failed.");
-                        let g = jsx("pre", {
+                        A(_("Triggering installation on router..."), "info"), z("install", 100, _("Installing package"));
+                        let g = await callDoInstall(d, u[0] || "", u.join(" "));
+                        if (0 !== g.result) throw Error(g.message || "Router installation failed.");
+                        let f = jsx("pre", {
                             style: "background: var(--fluent-code-bg, #1a1a1a); color: var(--fluent-text, #fff); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px; white-space: pre-wrap; word-wrap: break-word; max-height: 200px; overflow-y: auto; margin-top: 15px;"
                         });
                         (async ()=>{
@@ -473,11 +473,11 @@ let about_u = about_l.DummyValue.extend({
                                     })
                                 }), l = await a.json();
                                 if (l.error) break;
-                                l.result?.[1]?.log && (g.textContent = l.result[1].log, g.scrollTop = g.scrollHeight), await new Promise((e)=>setTimeout(e, 1000));
+                                l.result?.[1]?.log && (f.textContent = l.result[1].log, f.scrollTop = f.scrollHeight), await new Promise((e)=>setTimeout(e, 1000));
                             } catch  {
                                 break;
                             }
-                        })(), P(_("Theme successfully updated! Reloading RPC service, please refresh the page in 5 seconds."), "success"), A("done", 100, _("Finished")), dom.content($, [
+                        })(), A(_("Theme successfully updated! Reloading RPC service, please refresh the page in 5 seconds."), "success"), z("done", 100, _("Finished")), dom.content($, [
                             jsxs("div", {
                                 class: "veil-update-success",
                                 children: [
@@ -489,7 +489,7 @@ let about_u = about_l.DummyValue.extend({
                                         style: "text-align: center; margin: 15px 0;",
                                         children: _("The theme is being installed on your router. The logs are displayed below. Reloading the web interface will apply the changes once RPCD restarts.")
                                     }),
-                                    g,
+                                    f,
                                     jsx("div", {
                                         style: "display: flex; justify-content: center; margin-top: 20px;",
                                         children: jsx("button", {
@@ -509,19 +509,19 @@ let about_u = about_l.DummyValue.extend({
                     try {
                         await p();
                     } catch (e) {
-                        console.error("Update failed", e), P(`${_("Update failed")}: ${e instanceof Error ? e.message : String(e)}`, "error"), x.disabled = !1, x.removeAttribute("disabled"), m.disabled = !1, m.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), z();
+                        console.error("Update failed", e), A(`${_("Update failed")}: ${e instanceof Error ? e.message : String(e)}`, "error"), x.disabled = !1, x.removeAttribute("disabled"), m.disabled = !1, m.removeAttribute("disabled"), v.disabled = !1, v.removeAttribute("disabled"), w.disabled = !1, w.removeAttribute("disabled"), F();
                     }
                 });
             } catch (l) {
-                if (v.disabled = !1, console.error("Failed checking updates", l), l instanceof GitHubAPIError && 403 === l.status) {
-                    let n = jsx("input", {
+                if (w.disabled = !1, console.error("Failed checking updates", l), l instanceof GitHubAPIError && 403 === l.status) {
+                    let i = jsx("input", {
                         type: "text",
                         class: "cbi-input-text",
                         style: "width: 100%",
                         placeholder: "ghp_..."
-                    }), r = jsx("p", {
+                    }), n = jsx("p", {
                         children: _("API rate limit exceeded. Please enter a GitHub Token to continue. This token is only used for frontend requests and will not be saved on the router backend.")
-                    }), i = jsxs("p", {
+                    }), r = jsxs("p", {
                         style: "margin-top: 10px; font-size: 13px; color: var(--fluent-text-secondary);",
                         children: [
                             _("You can create a new token at"),
@@ -541,10 +541,10 @@ let about_u = about_l.DummyValue.extend({
                     });
                     L.ui.showModal(_("GitHub Token Required"), jsxs(Fragment, {
                         children: [
-                            r,
-                            i,
-                            s,
                             n,
+                            r,
+                            s,
+                            i,
                             jsxs("div", {
                                 class: "right",
                                 children: [
@@ -558,8 +558,8 @@ let about_u = about_l.DummyValue.extend({
                                         type: "button",
                                         class: "btn cbi-button-save",
                                         onclick: ()=>{
-                                            let e = n.value.trim();
-                                            L.ui.hideModal(), e && (P(_("Retrying with token..."), "info"), v.disabled = !0, N(e));
+                                            let e = i.value.trim();
+                                            L.ui.hideModal(), e && (A(_("Retrying with token..."), "info"), w.disabled = !0, N(e));
                                         },
                                         children: _("Submit")
                                     })
@@ -567,12 +567,12 @@ let about_u = about_l.DummyValue.extend({
                             })
                         ]
                     }));
-                } else P(`${_("Failed to check for updates")}: ${l instanceof Error ? l.message : String(l)}`, "error");
+                } else A(`${_("Failed to check for updates")}: ${l instanceof Error ? l.message : String(l)}`, "error");
             }
         };
-        return v.addEventListener("click", ()=>{
-            P(_("Checking for updates..."), "info"), v.disabled = !0, $.style.display = "none", z(), N();
-        }), F;
+        return w.addEventListener("click", ()=>{
+            A(_("Checking for updates..."), "info"), w.disabled = !0, $.style.display = "none", F(), N();
+        }), P;
     }
 });
 const registerAboutTab = (e)=>{
@@ -582,16 +582,16 @@ const registerAboutTab = (e)=>{
 ;// CONCATENATED MODULE: ./web/resources/veil-defaults.ts
 const FLUENT_DEFAULTS = {
     mode: "auto",
-    primary: "#0078d4",
-    dark_primary: "#4da6ff",
-    progressbar_font: "#2e2b60",
-    dark_progressbar_font: "#d6d9e5",
-    page_bg: "#fafafa",
-    card_bg: "#ffffff",
-    sidebar_bg: "#f3f3f3",
-    dark_page_bg: "#1b1b1b",
-    dark_card_bg: "#2d2d2d",
-    dark_sidebar_bg: "#1f1f1f",
+    primary: "#286983",
+    dark_primary: "#3e8fb0",
+    progressbar_font: "#464261",
+    dark_progressbar_font: "#e0def4",
+    page_bg: "#faf4ed",
+    card_bg: "#fffaf3",
+    sidebar_bg: "#f2e9e1",
+    dark_page_bg: "#232136",
+    dark_card_bg: "#2a273f",
+    dark_sidebar_bg: "#2a273f",
     font_weight: "normal",
     font_size: "14",
     border_radius: "4",
@@ -680,8 +680,8 @@ let shared_t = "fluent-live-preview", shared_r = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3
     }
 }, shared_l = new globalThis.Map();
 const configureHexColorValue = (s, o, n = !1)=>{
-    s.validate = (e, t)=>!e || shared_r.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), s.render = (i, c, u)=>{
-        let d = shared_e.Value.prototype.render.call(s, i, c, u), p = ()=>{
+    s.validate = (e, t)=>!e || shared_r.test(String(t)) || _("Expecting: %s").format(_("valid HEX color value")), s.render = (i, c, d)=>{
+        let u = shared_e.Value.prototype.render.call(s, i, c, d), p = ()=>{
             let e = document.querySelector(`[id^="widget.cbid.veil."][id$=".${o}"]`);
             e && ((e, t)=>{
                 if ("true" === e.dataset.fluentColorPicker) return;
@@ -724,7 +724,7 @@ const configureHexColorValue = (s, o, n = !1)=>{
                     })();
                 })(o, e));
         };
-        return n ? requestAnimationFrame(p) : setTimeout(p, 0), d;
+        return n ? requestAnimationFrame(p) : setTimeout(p, 0), u;
     };
 };
 const createModeSubtabs = (t, r, a)=>{
@@ -883,13 +883,13 @@ const registerGeneralTab = (l, r = !0)=>{
 
 ;// CONCATENATED MODULE: ./web/resources/view/veil-config/tabs/login.tsx
 
-let login_a = L.form, login_n = L.rpc, login_l = L.fs, login_i = L.ui, login_o = login_n.declare({
+let login_a = L.form, login_l = L.rpc, login_n = L.fs, login_i = L.ui, login_o = login_l.declare({
     object: "luci.veil",
     method: "avail",
     expect: {
         avail: 0
     }
-}), login_r = login_n.declare({
+}), login_r = login_l.declare({
     object: "luci.veil",
     method: "remove",
     params: [
@@ -898,7 +898,7 @@ let login_a = L.form, login_n = L.rpc, login_l = L.fs, login_i = L.ui, login_o =
     expect: {
         result: 0
     }
-}), login_d = login_n.declare({
+}), login_d = login_l.declare({
     object: "luci.veil",
     method: "rename",
     params: [
@@ -923,7 +923,7 @@ let login_p = new Set([
 }, login_v = (e, t)=>{
     dom.content(e, t);
 }, login_k = login_a.DummyValue.extend({
-    renderWidget: (a, n, c)=>{
+    renderWidget: (a, l, c)=>{
         let s = jsx("div", {
             class: "cbi-value-description fluent-bg-status",
             children: "Ready to upload or remove custom backgrounds."
@@ -943,10 +943,10 @@ let login_p = new Set([
             login_v(s, [
                 document.createTextNode(e)
             ]);
-        }, $ = ()=>login_l.list("/www/luci-static/veil/background").catch(()=>[]).then((a)=>{
-                let n = a.filter((e)=>"file" === e.type && login_m(String(e.name ?? ""))).sort((e, t)=>String(e.name ?? "").localeCompare(String(t.name ?? "")));
-                n.length ? login_v(k, n.map((a)=>{
-                    let n, l, o, d = String(a.name ?? ""), c = jsx("button", {
+        }, $ = ()=>login_n.list("/www/luci-static/veil/background").catch(()=>[]).then((a)=>{
+                let l = a.filter((e)=>"file" === e.type && login_m(String(e.name ?? ""))).sort((e, t)=>String(e.name ?? "").localeCompare(String(t.name ?? "")));
+                l.length ? login_v(k, l.map((a)=>{
+                    let l, n, o, d = String(a.name ?? ""), c = jsx("button", {
                         class: "btn cbi-button cbi-button-remove",
                         type: "button",
                         children: "Delete"
@@ -958,15 +958,15 @@ let login_p = new Set([
                     return s && c.addEventListener("click", s), jsxs("div", {
                         class: "fluent-bg-item",
                         children: [
-                            (n = login_b(d), l = `/luci-static/veil/background/${encodeURIComponent(d)}`, "mp4" === n || "webm" === n ? jsx("video", {
+                            (l = login_b(d), n = `/luci-static/veil/background/${encodeURIComponent(d)}`, "mp4" === l || "webm" === l ? jsx("video", {
                                 class: "fluent-bg-preview fluent-bg-preview-video",
                                 muted: !0,
                                 playsInline: !0,
                                 preload: "metadata",
-                                src: l
+                                src: n
                             }) : jsx("div", {
                                 class: "fluent-bg-preview",
-                                style: `background-image:url('${l.replace(/'/g, "%27")}')`
+                                style: `background-image:url('${n.replace(/'/g, "%27")}')`
                             })),
                             jsxs("div", {
                                 class: "fluent-bg-meta",
@@ -2228,7 +2228,7 @@ let veil_config_e = L.form, veil_config_o = L.uci;
 
 
 
-class veil_config_m extends L.view {
+class veil_config_s extends L.view {
     load() {
         return Promise.all([
             veil_config_o.load("veil"),
@@ -2236,11 +2236,11 @@ class veil_config_m extends L.view {
         ]);
     }
     render(o) {
-        let [, m] = o, s = new veil_config_e.Map("veil", _("Fluent theme settings"), _("Configure color mode, accent colors, layout sizing, animation behavior, login-page appearance, and advanced CSS overrides for luci-theme-veil.")), u = s.section(veil_config_e.TypedSection, "global", _("Theme settings"));
-        return u.addremove = !1, u.anonymous = !0, registerGeneralTab(u), registerMenuTab(u, m), registerColorsTab(u), registerAnimationTab(u), registerLoginTab(u), registerAdvancedTab(u), registerAboutTab(u), s.render();
+        let [, s] = o, c = new veil_config_e.Map("veil", _("Fluent theme settings"), _("Configure color mode, accent colors, layout sizing, animation behavior, login-page appearance, and advanced CSS overrides for luci-theme-veil.")), f = c.section(veil_config_e.TypedSection, "global", _("Theme settings"));
+        return f.addremove = !1, f.anonymous = !0, registerGeneralTab(f), registerMenuTab(f, s), registerColorsTab(f), registerAnimationTab(f), registerLoginTab(f), registerAdvancedTab(f), registerAboutTab(f), c.render();
     }
 }
-const main = veil_config_m;
+const main = veil_config_s;
 
 
 return main;

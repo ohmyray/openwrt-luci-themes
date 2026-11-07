@@ -44,7 +44,7 @@ __webpack_require__.d(__webpack_exports__, {
   main: () => (/* binding */ main)
 });
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https+++codeload.github.com+LazuliKao+luci-types+tar.gz+90a8e40b9_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
 const Fragment = Symbol.for("jsx.fragment");
 function jsx_factory_e(e, t) {
     let { children: n, ...r } = null === t || "object" != typeof t || Array.isArray(t) ? {} : t, o = function e(t, n = []) {
@@ -89,7 +89,7 @@ function jsxDEV(t, n) {
     return jsx_factory_e(t, n);
 }
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https+++codeload.github.com+LazuliKao+luci-types+tar.gz+90a8e40b9_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
 
 
 ;// CONCATENATED MODULE: ./web/resources/menu-layout.ts
@@ -647,18 +647,18 @@ function apply_change_preview_i(e) {
             ]
         ] : []);
 }
-function apply_change_preview_u(e, t) {
+function apply_change_preview_a(e, t) {
     let n = document.createElement(e);
     return n.textContent = t, n;
 }
-function apply_change_preview_a(e, l, r) {
-    let i = document.createElement("var"), u = document.createElement(e);
-    return apply_change_preview_t(u, l), apply_change_preview_n(u, r), i.appendChild(u), i;
+function apply_change_preview_u(e, l, r) {
+    let i = document.createElement("var"), a = document.createElement(e);
+    return apply_change_preview_t(a, l), apply_change_preview_n(a, r), i.appendChild(a), i;
 }
 function setupApplyChangePreview() {
     let c = ui.changes;
     if (c[apply_change_preview_e] || "function" != typeof c.apply || "function" != typeof c.displayStatus) return;
-    let o = c.apply.bind(c), d = c.displayStatus.bind(c), p = 0, s = null, m = ()=>{
+    let o = c.apply.bind(c), d = c.displayStatus.bind(c), p = 0, s = null, v = ()=>{
         let e = s;
         if (null === e || null === e.changes || e.dismissed) return;
         let i = document.querySelector("#modal_overlay .modal.alert-message.notice.spinning");
@@ -677,68 +677,68 @@ function setupApplyChangePreview() {
                 p.className = "fluent-apply-change-preview-card-header";
                 let s = document.createElement("span");
                 s.textContent = `# /etc/config/${o}`, p.appendChild(s);
-                let m = document.createElement("button");
-                m.className = "fluent-apply-change-preview-close", m.type = "button", m.title = "Close preview", m.onclick = ()=>{
+                let v = document.createElement("button");
+                v.className = "fluent-apply-change-preview-close", v.type = "button", v.title = "Close preview", v.onclick = ()=>{
                     i && i(), c.remove();
-                }, p.appendChild(m), e.appendChild(p);
-                let v = document.createElement("div");
-                v.className = "fluent-apply-change-preview-card-body uci-change-list";
+                }, p.appendChild(v), e.appendChild(p);
+                let m = document.createElement("div");
+                m.className = "fluent-apply-change-preview-card-body uci-change-list";
                 let f = null;
-                for (let e of d)v.appendChild(function(e, i, c) {
-                    if (!Array.isArray(i) || !i.every((e)=>"string" == typeof e)) return apply_change_preview_u("var", apply_change_preview_r(i));
-                    let [o, d, p, s] = i, m = void 0 === d ? void 0 : null !== c && d === c[0] ? `@${c[1]}[-1]` : d;
-                    if ("add" === o && 3 === i.length && void 0 !== m && void 0 !== p) {
+                for (let e of d)m.appendChild(function(e, i, c) {
+                    if (!Array.isArray(i) || !i.every((e)=>"string" == typeof e)) return apply_change_preview_a("var", apply_change_preview_r(i));
+                    let [o, d, p, s] = i, v = void 0 === d ? void 0 : null !== c && d === c[0] ? `@${c[1]}[-1]` : d;
+                    if ("add" === o && 3 === i.length && void 0 !== v && void 0 !== p) {
                         let l = document.createElement("ins");
-                        return apply_change_preview_t(l, `uci add ${e} `), apply_change_preview_n(l, p), apply_change_preview_t(l, ` # =${m}`), l;
+                        return apply_change_preview_t(l, `uci add ${e} `), apply_change_preview_n(l, p), apply_change_preview_t(l, ` # =${v}`), l;
                     }
-                    if ("set" === o && 3 === i.length && void 0 !== m && void 0 !== p) {
+                    if ("set" === o && 3 === i.length && void 0 !== v && void 0 !== p) {
                         let l = document.createElement("ins");
-                        return apply_change_preview_t(l, `uci set ${e}.`), apply_change_preview_n(l, m), apply_change_preview_t(l, `=${p}`), l;
+                        return apply_change_preview_t(l, `uci set ${e}.`), apply_change_preview_n(l, v), apply_change_preview_t(l, `=${p}`), l;
                     }
-                    if ("set" === o && 4 === i.length && void 0 !== m && void 0 !== p && void 0 !== s) return apply_change_preview_a("ins", `uci set ${e}.${m}.${p}=`, apply_change_preview_l(s));
-                    if ("remove" === o && 2 === i.length && void 0 !== m) {
+                    if ("set" === o && 4 === i.length && void 0 !== v && void 0 !== p && void 0 !== s) return apply_change_preview_u("ins", `uci set ${e}.${v}.${p}=`, apply_change_preview_l(s));
+                    if ("remove" === o && 2 === i.length && void 0 !== v) {
                         let l = document.createElement("del");
-                        return apply_change_preview_t(l, `uci del ${e}.`), apply_change_preview_n(l, m), l;
+                        return apply_change_preview_t(l, `uci del ${e}.`), apply_change_preview_n(l, v), l;
                     }
-                    if ("remove" === o && 3 === i.length && void 0 !== m && void 0 !== p) return apply_change_preview_a("del", `uci del ${e}.${m}.`, p);
-                    if ("order" === o && 3 === i.length && void 0 !== m && void 0 !== p) {
+                    if ("remove" === o && 3 === i.length && void 0 !== v && void 0 !== p) return apply_change_preview_u("del", `uci del ${e}.${v}.`, p);
+                    if ("order" === o && 3 === i.length && void 0 !== v && void 0 !== p) {
                         let l = document.createElement("var");
-                        return apply_change_preview_t(l, `uci reorder ${e}.${m}=`), apply_change_preview_n(l, p), l;
+                        return apply_change_preview_t(l, `uci reorder ${e}.${v}=`), apply_change_preview_n(l, p), l;
                     }
-                    if ("list-add" === o && 4 === i.length && void 0 !== m && void 0 !== p && void 0 !== s) return apply_change_preview_a("ins", `uci add_list ${e}.${m}.${p}=`, apply_change_preview_l(s));
-                    if ("list-del" === o && 4 === i.length && void 0 !== m && void 0 !== p && void 0 !== s) return apply_change_preview_a("del", `uci del_list ${e}.${m}.${p}=`, apply_change_preview_l(s));
-                    if ("rename" === o && 3 === i.length && void 0 !== m && void 0 !== p) {
+                    if ("list-add" === o && 4 === i.length && void 0 !== v && void 0 !== p && void 0 !== s) return apply_change_preview_u("ins", `uci add_list ${e}.${v}.${p}=`, apply_change_preview_l(s));
+                    if ("list-del" === o && 4 === i.length && void 0 !== v && void 0 !== p && void 0 !== s) return apply_change_preview_u("del", `uci del_list ${e}.${v}.${p}=`, apply_change_preview_l(s));
+                    if ("rename" === o && 3 === i.length && void 0 !== v && void 0 !== p) {
                         let l = document.createElement("var");
-                        return apply_change_preview_t(l, `uci rename ${e}.${m}=`), apply_change_preview_n(l, p), l;
+                        return apply_change_preview_t(l, `uci rename ${e}.${v}=`), apply_change_preview_n(l, p), l;
                     }
-                    if ("rename" === o && 4 === i.length && void 0 !== m && void 0 !== p && void 0 !== s) {
+                    if ("rename" === o && 4 === i.length && void 0 !== v && void 0 !== p && void 0 !== s) {
                         let r = document.createElement("var");
-                        return apply_change_preview_t(r, `uci rename ${e}.${m}.${p}=`), apply_change_preview_n(r, apply_change_preview_l(s)), r;
+                        return apply_change_preview_t(r, `uci rename ${e}.${v}.${p}=`), apply_change_preview_n(r, apply_change_preview_l(s)), r;
                     }
-                    return apply_change_preview_u("var", apply_change_preview_r(i));
+                    return apply_change_preview_a("var", apply_change_preview_r(i));
                 }(o, e, f)), Array.isArray(e) && 3 === e.length && "add" === e[0] && "string" == typeof e[1] && "string" == typeof e[2] && (f = [
                     e[1],
                     e[2]
                 ]);
-                e.appendChild(v), c.appendChild(e);
+                e.appendChild(m), c.appendChild(e);
             }
             return c;
         }(e.changes, ()=>{
             e.dismissed = !0;
         });
         c.appendChild(d), e.preview = d;
-    }, v = null;
+    }, m = null;
     c.displayStatus = (e, t)=>{
-        if ("notice spinning" !== e ? null === v && (v = setTimeout(()=>{
+        if ("notice spinning" !== e ? null === m && (m = setTimeout(()=>{
             "function" == typeof document.querySelectorAll && document.querySelectorAll(".fluent-apply-change-preview").forEach((e)=>{
                 e.remove();
-            }), v = null;
-        }, 150)) : null !== v && (clearTimeout(v), v = null), d(e, t), !e) {
+            }), m = null;
+        }, 150)) : null !== m && (clearTimeout(m), m = null), d(e, t), !e) {
             p += 1, s = null;
             return;
         }
-        "notice spinning" === e && m();
-    }, "u" > typeof MutationObserver && new MutationObserver(m).observe(document, {
+        "notice spinning" === e && v();
+    }, "u" > typeof MutationObserver && new MutationObserver(v).observe(document, {
         childList: !0,
         subtree: !0
     }), c.apply = (e)=>{
@@ -756,7 +756,7 @@ function setupApplyChangePreview() {
                 L.uci.changes().then((e)=>{
                     if (s?.token !== t) return;
                     let n = apply_change_preview_i(e);
-                    n.length && (s.changes = n, m());
+                    n.length && (s.changes = n, v());
                 }, ()=>{
                     s?.token === t && null === s.changes && (s = null);
                 });

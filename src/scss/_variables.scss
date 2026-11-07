@@ -45,10 +45,10 @@
   // ============================================================
   // BORDER RADIUS (FluentUI borderRadius)
   // ============================================================
-  --fluent-radius-sm: 2px; // Small
-  --fluent-radius-md: 4px; // Medium
-  --fluent-radius-lg: 8px; // Large
-  --fluent-radius-xl: 12px; // Extra Large
+  --fluent-radius-sm: 4px;
+  --fluent-radius-md: 8px;
+  --fluent-radius-lg: 10px;
+  --fluent-radius-xl: 16px;
   --fluent-radius-circular: 10000px; // Circular (pill)
   --fluent-radius-round: 50%; // Round (circle)
 
@@ -61,7 +61,7 @@
   --fluent-duration-normal: 250ms;
   --fluent-duration-slow: 400ms;
   --fluent-duration-slower: 500ms;
-  --fluent-easing-standard: cubic-bezier(0.8, 0, 0.2, 1);
+  --fluent-easing-standard: cubic-bezier(0.45, 0, 0.4, 1);
   --fluent-easing-decelerate: cubic-bezier(0, 0, 0, 1);
   --fluent-easing-accelerate: cubic-bezier(1, 0, 1, 1);
   --fluent-easing-easy-ease: cubic-bezier(0.33, 0, 0.67, 1);

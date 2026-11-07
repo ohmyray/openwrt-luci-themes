@@ -6,133 +6,133 @@
   color-scheme: dark;
 
   // Backgrounds - FluentUI dark: Grey12 for page, Grey16 for card
-  --fluent-bg: #1f1f1f; // Grey12
-  --fluent-bg-card: #292929; // Grey16
-  --fluent-bg-hover: #383838; // Grey24
-  --fluent-bg-active: #424242; // Grey26
-  --fluent-bg-page: #1a1a1a; // Grey10
+  --fluent-bg: #2a273f;
+  --fluent-bg-card: #2a273f;
+  --fluent-bg-hover: #393552;
+  --fluent-bg-active: #44415a;
+  --fluent-bg-page: #232136;
 
   // Semantic Colors - FluentUI dark overrides
-  --fluent-primary: #4da6ff;
-  --fluent-primary-hover: var(--fluent-brand-90);
-  --fluent-primary-active: var(--fluent-brand-100);
-  --fluent-primary-light: color-mix(in srgb, var(--fluent-primary) 15%, #000000);
-  --fluent-primary-lighter: color-mix(in srgb, var(--fluent-primary) 8%, #000000);
-  --fluent-primary-lightest: color-mix(in srgb, var(--fluent-primary) 12%, #000000);
-  --fluent-selection-bg: color-mix(in srgb, var(--fluent-primary) 35%, #000000);
+  --fluent-primary: #3e8fb0;
+  --fluent-primary-hover: #4f9dbe;
+  --fluent-primary-active: #5cb0d0;
+  --fluent-primary-light: color-mix(in srgb, var(--fluent-primary) 22%, #232136);
+  --fluent-primary-lighter: color-mix(in srgb, var(--fluent-primary) 12%, #232136);
+  --fluent-primary-lightest: color-mix(in srgb, var(--fluent-primary) 16%, #232136);
+  --fluent-selection-bg: color-mix(in srgb, var(--fluent-primary) 35%, #232136);
   --fluent-selection-text: var(--fluent-text);
 
   --fluent-info: var(--fluent-primary);
   --fluent-info-light: var(--fluent-primary-light);
-  --fluent-success: #6feb6f;
-  --fluent-success-light: #133c13;
-  --fluent-warning: #ff8c00;
-  --fluent-warning-hover: #ffaa33;
-  --fluent-warning-active: #ffbb55;
-  --fluent-warning-light: #442200;
-  --fluent-error: #ff5f5f;
-  --fluent-error-hover: #ff8080;
-  --fluent-error-active: #ff9f9f;
-  --fluent-error-light: #440000;
-  --fluent-purple: #c084fc;
-  --fluent-purple-light: color-mix(in srgb, #c084fc 18%, transparent);
+  --fluent-success: #9ccfd8;
+  --fluent-success-light: #2c4a55;
+  --fluent-warning: #f6c177;
+  --fluent-warning-hover: #f8cf92;
+  --fluent-warning-active: #fadbae;
+  --fluent-warning-light: #4a3c2a;
+  --fluent-error: #eb6f92;
+  --fluent-error-hover: #ef88a5;
+  --fluent-error-active: #f2a0b8;
+  --fluent-error-light: #4a2b36;
+  --fluent-purple: #c4a7e7;
+  --fluent-purple-light: color-mix(in srgb, #c4a7e7 18%, transparent);
 
   // Text - FluentUI dark: White for primary, Grey68 for secondary
-  --fluent-text: #ffffff; // White
-  --fluent-text-secondary: #adadad; // Grey68
-  --fluent-text-disabled: #6b6b6b; // Grey44
-  --fluent-text-on-primary: #ffffff;
+  --fluent-text: #e0def4;
+  --fluent-text-secondary: #908caa;
+  --fluent-text-disabled: #6e6a86;
+  --fluent-text-on-primary: #232136;
   --fluent-text-link: var(--fluent-primary); // Brand tint20
   --fluent-text-link-hover: var(--fluent-primary-hover); // Brand tint30
 
   // Borders - FluentUI dark: Grey32 for default, Grey48 for hover
-  --fluent-border: #525252; // Grey32
-  --fluent-border-hover: #7a7a7a; // Grey48
+  --fluent-border: #44415a;
+  --fluent-border-hover: #56526e;
   --fluent-border-active: var(--fluent-primary); // Brand tint20
 
   // Shadows - Stronger, soft multi-layer for dark mode
-  --fluent-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2), 0 2px 10px rgba(0, 0, 0, 0.3);
-  --fluent-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.25), 0 4px 18px rgba(0, 0, 0, 0.35);
-  --fluent-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3), 0 8px 32px rgba(0, 0, 0, 0.4);
-  --fluent-shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.3);
+  --fluent-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.28);
+  --fluent-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.32);
+  --fluent-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.38);
+  --fluent-shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.45);
 
   // Sidebar
-  --fluent-sidebar-bg: #1f1f1f;
-  --fluent-sidebar-item-hover: rgba(255, 255, 255, 0.06);
+  --fluent-sidebar-bg: #2a273f;
+  --fluent-sidebar-item-hover: rgba(224, 222, 244, 0.06);
   --fluent-sidebar-item-active: color-mix(in srgb, var(--fluent-primary) 8%, transparent);
 
   // Input
-  --fluent-input-bg: #292929; // Grey16
-  --fluent-input-border: #666666;
-  --fluent-input-border-bottom: #adadad;
-  --fluent-input-border-hover: #757575;
-  --fluent-input-border-bottom-hover: #bdbdbd;
+  --fluent-input-bg: #2a273f;
+  --fluent-input-border: #44415a;
+  --fluent-input-border-bottom: #908caa;
+  --fluent-input-border-hover: #56526e;
+  --fluent-input-border-bottom-hover: #b0abc8;
   --fluent-input-border-bottom-focus: var(--fluent-primary); // Brand tint20
-  --fluent-input-bg-disabled: #333333; // Grey20
-  --fluent-input-bg-hover: #333333; // Grey20
+  --fluent-input-bg-disabled: #393552;
+  --fluent-input-bg-hover: #393552;
   --fluent-calendar-picker-invert: 1;
 
   // Button
   --fluent-btn-primary-bg: color-mix(in srgb, var(--fluent-primary) 65%, #000000); // Brand tint20
   --fluent-btn-primary-bg-hover: color-mix(in srgb, var(--fluent-primary) 75%, #000000); // Brand tint30
   --fluent-btn-primary-bg-active: color-mix(in srgb, var(--fluent-primary) 50%, #000000); // Brand tint40
-  --fluent-btn-secondary-bg: #292929;
-  --fluent-btn-secondary-bg-hover: #3d3d3d;
-  --fluent-btn-secondary-bg-active: #1f1f1f;
-  --fluent-btn-secondary-border: #666666; // Grey68
-  --fluent-btn-secondary-border-hover:#757575; // White
-  --fluent-btn-secondary-border-active: #757575; // Brand tint20
+  --fluent-btn-secondary-bg: #2a273f;
+  --fluent-btn-secondary-bg-hover: #393552;
+  --fluent-btn-secondary-bg-active: #232136;
+  --fluent-btn-secondary-border: #44415a;
+  --fluent-btn-secondary-border-hover: #56526e;
+  --fluent-btn-secondary-border-active: #56526e;
 
   // Card
-  --fluent-card-bg: #292929; // Grey16
-  --fluent-card-border: #3d3d3d; // Grey24
+  --fluent-card-bg: #2a273f;
+  --fluent-card-border: #393552;
 
   // Table
-  --fluent-table-header-bg: #292929; // Grey16
-  --fluent-table-row-hover: #383838; // Grey24
+  --fluent-table-header-bg: #2a273f;
+  --fluent-table-row-hover: #393552;
   --fluent-table-row-selected: color-mix(in srgb, var(--fluent-primary) 25%, #000000); // BrandShade30
-  --fluent-table-border: #3d3d3d; // Grey24
+  --fluent-table-border: #393552;
 
   // Modal
-  --fluent-modal-bg: #292929; // Grey16
-  --fluent-modal-overlay: rgba(0, 0, 0, 0.6);
+  --fluent-modal-bg: #2a273f;
+  --fluent-modal-overlay: rgba(14, 13, 22, 0.65);
 
   // Checkbox
-  --fluent-checkbox-border: #adadad; // Grey68
-  --fluent-checkbox-bg: #292929; // Grey16
+  --fluent-checkbox-border: #908caa;
+  --fluent-checkbox-bg: #2a273f;
   --fluent-checkbox-checked-bg: var(--fluent-primary); // Brand tint20
   --fluent-checkbox-checked-border: var(--fluent-primary);
-  --fluent-checkbox-hover-border: #ffffff; // White
+  --fluent-checkbox-hover-border: #e0def4;
 
   // Scrollbar
-  --fluent-scrollbar-thumb-bg: #525252; // Grey32
-  --fluent-scrollbar-thumb-bg-hover: #7a7a7a; // Grey48
+  --fluent-scrollbar-thumb-bg: #44415a;
+  --fluent-scrollbar-thumb-bg-hover: #56526e;
   --fluent-scrollbar-thumb-horizontal-bg: rgba(255, 255, 255, 0.15);
   --fluent-scrollbar-thumb-horizontal-bg-hover: rgba(255, 255, 255, 0.35);
 
   // Progress
-  --fluent-progress-bg: #3d3d3d; // Grey24
+  --fluent-progress-bg: #393552;
   --fluent-progress-bar-bg: var(--fluent-primary); // Brand tint20
 
   // Login
-  --fluent-login-bg: rgba(31, 31, 31, 0.92);
-  --fluent-login-border: rgba(82, 82, 82, 0.7);
+  --fluent-login-bg: rgba(42, 39, 63, 0.88);
+  --fluent-login-border: rgba(68, 65, 90, 0.7);
   --fluent-login-icon-color: var(--fluent-text-secondary);
 
   // Tooltip
-  --fluent-tooltip-bg: #292929;
-  --fluent-tooltip-text: #ffffff;
+  --fluent-tooltip-bg: #393552;
+  --fluent-tooltip-text: #e0def4;
 
   // Dropdown
   --fluent-dropdown-bg: var(--fluent-bg-card);
   --fluent-dropdown-border: var(--fluent-input-border);
-  --fluent-dropdown-shadow: 0 8px 16px rgba(0, 0, 0, 0.28), 0 0 2px rgba(0, 0, 0, 0.24);
+  --fluent-dropdown-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   --fluent-dropdown-option-hover: var(--fluent-bg-hover);
-  --fluent-dropdown-option-selected: rgba(77, 166, 255, 0.1);
+  --fluent-dropdown-option-selected: rgba(62, 143, 176, 0.12);
 
   // Focus indicator (white in dark mode for visibility)
-  --fluent-focus-color: #ffffff;
-  --fluent-focus-inner-color: #000000;
+  --fluent-focus-color: #9ccfd8;
+  --fluent-focus-inner-color: #232136;
 }
 
 @include theme-dark {

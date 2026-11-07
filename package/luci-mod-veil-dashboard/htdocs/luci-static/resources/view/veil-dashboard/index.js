@@ -46,7 +46,7 @@ __webpack_require__.d(__webpack_exports__, {
   main: () => (/* binding */ main)
 });
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https+++codeload.github.com+LazuliKao+luci-types+tar.gz+90a8e40b9_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-factory.ts
 const Fragment = Symbol.for("jsx.fragment");
 function jsx_factory_e(e, t) {
     let { children: n, ...r } = null === t || "object" != typeof t || Array.isArray(t) ? {} : t, o = function e(t, n = []) {
@@ -91,7 +91,7 @@ function jsxDEV(t, n) {
     return jsx_factory_e(t, n);
 }
 
-;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
+;// CONCATENATED MODULE: ../node_modules/.pnpm/@lazulikao+luci-types@https+++codeload.github.com+LazuliKao+luci-types+tar.gz+90a8e40b9_685a81b9ead15f36368ce6e6ebcf4a27/node_modules/@lazulikao/luci-types/src/jsx/jsx-runtime.ts
 
 
 ;// CONCATENATED MODULE: ./web/veil-dashboard/model.ts
@@ -170,32 +170,32 @@ function formatLocalTime(t) {
 ;// CONCATENATED MODULE: ./web/veil-dashboard/index.tsx
 
 
-let veil-dashboard_l = rpc.declare({
+let veil_dashboard_l = rpc.declare({
     object: "system",
     method: "board"
-}), veil-dashboard_o = rpc.declare({
+}), veil_dashboard_o = rpc.declare({
     object: "system",
     method: "info"
 }), c = rpc.declare({
     object: "luci",
     method: "getVersion"
-}), veil-dashboard_u = rpc.declare({
+}), veil_dashboard_u = rpc.declare({
     object: "luci-rpc",
     method: "getDHCPLeases",
     expect: {
         "": {}
     }
 });
-function veil-dashboard_h(e) {
+function veil_dashboard_h(e) {
     return null === e || "object" != typeof e || Array.isArray(e) ? {} : e;
 }
-function veil-dashboard_m(e) {
+function veil_dashboard_m(e) {
     return "string" == typeof e ? e : "";
 }
 function p(e) {
     return "number" == typeof e && Number.isFinite(e) ? e : 0;
 }
-async function veil-dashboard_f(e, t) {
+async function veil_dashboard_f(e, t) {
     try {
         return await e;
     } catch  {
@@ -217,16 +217,16 @@ function y(e, t = !1) {
     };
 }
 async function g() {
-    await veil-dashboard_f(network.flushCache(), {});
+    await veil_dashboard_f(network.flushCache(), {});
     let [e, t, r, a, s, n, d, u] = await Promise.all([
-        veil-dashboard_f(veil-dashboard_l(), {}),
-        veil-dashboard_f(veil-dashboard_o(), {}),
-        veil-dashboard_f(c(), {}),
-        veil-dashboard_f(network.getWANNetworks(), []),
-        veil-dashboard_f(network.getWAN6Networks(), []),
-        veil-dashboard_f(network.getNetworks(), []),
-        veil-dashboard_f(network.getWifiDevices(), []),
-        veil-dashboard_f(network.getWifiNetworks(), [])
+        veil_dashboard_f(veil_dashboard_l(), {}),
+        veil_dashboard_f(veil_dashboard_o(), {}),
+        veil_dashboard_f(c(), {}),
+        veil_dashboard_f(network.getWANNetworks(), []),
+        veil_dashboard_f(network.getWAN6Networks(), []),
+        veil_dashboard_f(network.getNetworks(), []),
+        veil_dashboard_f(network.getWifiDevices(), []),
+        veil_dashboard_f(network.getWifiNetworks(), [])
     ]), h = u.map((e)=>{
         let t = d.find((t)=>t.getName() === e.getWifiDeviceName());
         return {
@@ -261,12 +261,12 @@ async function g() {
 }
 async function w() {
     let [e, t, r] = await Promise.all([
-        veil-dashboard_f(veil-dashboard_u(), {}),
-        veil-dashboard_f(network.getWifiNetworks(), []),
-        veil-dashboard_f(network.getHostHints(), null)
+        veil_dashboard_f(veil_dashboard_u(), {}),
+        veil_dashboard_f(network.getWifiNetworks(), []),
+        veil_dashboard_f(network.getHostHints(), null)
     ]), a = await Promise.all(t.map(async (e)=>({
             wifi: e,
-            peers: await veil-dashboard_f(e.getAssocList(), [])
+            peers: await veil_dashboard_f(e.getAssocList(), [])
         }))), s = [];
     for (let { wifi: e, peers: t } of a)for (let a of t){
         let t = r?.getHostnameByMACAddr(a.mac) || r?.getIPAddrByMACAddr(a.mac) || r?.getIP6AddrByMACAddr(a.mac) || "";
@@ -282,24 +282,24 @@ async function w() {
     }
     return {
         leases: function(e) {
-            let t = veil-dashboard_h(e), r = [];
+            let t = veil_dashboard_h(e), r = [];
             if (Array.isArray(t.dhcp_leases)) for (let e of t.dhcp_leases){
-                let t = veil-dashboard_h(e);
+                let t = veil_dashboard_h(e);
                 r.push({
                     family: "IPv4",
-                    hostname: veil-dashboard_m(t.hostname),
-                    address: veil-dashboard_m(t.ipaddr),
-                    identifier: veil-dashboard_m(t.macaddr),
+                    hostname: veil_dashboard_m(t.hostname),
+                    address: veil_dashboard_m(t.ipaddr),
+                    identifier: veil_dashboard_m(t.macaddr),
                     expires: !1 !== t.expires && p(t.expires)
                 });
             }
             if (Array.isArray(t.dhcp6_leases)) for (let e of t.dhcp6_leases){
-                let t = veil-dashboard_h(e), a = Array.isArray(t.ip6addrs) ? t.ip6addrs.filter((e)=>"string" == typeof e) : [];
+                let t = veil_dashboard_h(e), a = Array.isArray(t.ip6addrs) ? t.ip6addrs.filter((e)=>"string" == typeof e) : [];
                 r.push({
                     family: "IPv6",
-                    hostname: veil-dashboard_m(t.hostname),
-                    address: a.join(", ") || veil-dashboard_m(t.ip6addr),
-                    identifier: veil-dashboard_m(t.duid),
+                    hostname: veil_dashboard_m(t.hostname),
+                    address: a.join(", ") || veil_dashboard_m(t.ip6addr),
+                    identifier: veil_dashboard_m(t.duid),
                     expires: !1 !== t.expires && p(t.expires)
                 });
             }
@@ -308,10 +308,10 @@ async function w() {
         clients: s
     };
 }
-function b(e) {
+function v(e) {
     return null == e || "" === e ? "-" : String(e);
 }
-function v(t) {
+function b(t) {
     return jsx("span", {
         class: `fluent-dashboard__status fluent-dashboard__status--${t ? "up" : "down"}`,
         children: t ? _("Online") : _("Offline")
@@ -349,7 +349,7 @@ function S(r, a, s) {
                 jsx("tbody", {
                     children: a.length ? a.map((t)=>jsx("tr", {
                             children: t.map((t)=>jsx("td", {
-                                    children: t instanceof Node ? t : b(t)
+                                    children: t instanceof Node ? t : v(t)
                                 }))
                         })) : jsx("tr", {
                         children: jsx("td", {
@@ -414,7 +414,7 @@ function x(t) {
                 }),
                 jsx("div", {
                     class: "fluent-dashboard__details-value",
-                    children: r instanceof Node ? r : b(r)
+                    children: r instanceof Node ? r : v(r)
                 })
             ])
     }));
@@ -491,7 +491,7 @@ function N(e) {
     ], t.map(([e, t])=>[
             e,
             t.name,
-            v(t.up),
+            b(t.up),
             t.protocol,
             t.addresses.join(", "),
             t.gateway,
@@ -509,7 +509,7 @@ function D(e) {
     ], e.map((e)=>[
             e.name,
             e.device,
-            v(e.up),
+            b(e.up),
             e.addresses.join(", "),
             formatBytes(e.rx),
             formatBytes(e.tx)
@@ -526,10 +526,10 @@ function k(t) {
     ], t.map((t)=>[
             jsx("span", {
                 title: t.hardware,
-                children: b(t.radio)
+                children: v(t.radio)
             }),
             t.ssid,
-            v(t.up),
+            b(t.up),
             t.mode,
             null === t.channel ? "-" : t.frequency ? `${t.channel} (${t.frequency} GHz)` : t.channel,
             t.encryption

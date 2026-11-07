@@ -140,7 +140,7 @@ export default defineConfig(({ envMode }) => {
         plugins: [pluginSass()],
         source: {
           entry: {
-            fluent: variant === "lite" ? "./scss/veil-lite.scss" : "./scss/veil.scss",
+            veil: variant === "lite" ? "./scss/veil-lite.scss" : "./scss/veil.scss",
           },
         },
         output: {

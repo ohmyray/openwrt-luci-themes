@@ -1,15 +1,15 @@
 {%
   defaults.mode = "auto";
-  defaults.primary = "#0078d4";
-  defaults.dark_primary = "#4da6ff";
-  defaults.progressbar_font = "#2e2b60";
-  defaults.dark_progressbar_font = "#d6d9e5";
-  defaults.page_bg = "#fafafa";
-  defaults.card_bg = "#ffffff";
-  defaults.sidebar_bg = "#f3f3f3";
-  defaults.dark_page_bg = "#1b1b1b";
-  defaults.dark_card_bg = "#2d2d2d";
-  defaults.dark_sidebar_bg = "#1f1f1f";
+  defaults.primary = "#286983";
+  defaults.dark_primary = "#3e8fb0";
+  defaults.progressbar_font = "#464261";
+  defaults.dark_progressbar_font = "#e0def4";
+  defaults.page_bg = "#faf4ed";
+  defaults.card_bg = "#fffaf3";
+  defaults.sidebar_bg = "#f2e9e1";
+  defaults.dark_page_bg = "#232136";
+  defaults.dark_card_bg = "#2a273f";
+  defaults.dark_sidebar_bg = "#2a273f";
   defaults.font_weight = "normal";
   defaults.font_size = "14";
   defaults.border_radius = "4";
