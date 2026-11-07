@@ -1,0 +1,54 @@
+// Veil glass layer: wallpaper backdrop + frosted surfaces
+
+$glass-blur: blur(var(--fluent-blur-radius, 40px)) saturate(150%);
+
+body {
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--fluent-bg-page) 62%, transparent),
+      color-mix(in srgb, var(--fluent-bg-page) 78%, transparent)
+    ),
+    url("../img/wallpaper.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: var(--fluent-bg-page);
+}
+
+.main-left {
+  background: color-mix(
+    in srgb,
+    var(--fluent-sidebar-bg) calc(var(--fluent-blur-opacity, 0.8) * 100%),
+    transparent
+  ) !important;
+  backdrop-filter: $glass-blur !important;
+  -webkit-backdrop-filter: $glass-blur !important;
+  border-inline-end: 1px solid color-mix(in srgb, var(--fluent-border) 45%, transparent) !important;
+}
+
+body > div.main > div.main-right > header {
+  background: color-mix(
+    in srgb,
+    var(--fluent-bg) calc(var(--fluent-blur-opacity, 0.8) * 100%),
+    transparent
+  ) !important;
+  backdrop-filter: $glass-blur !important;
+  -webkit-backdrop-filter: $glass-blur !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--fluent-border) 45%, transparent) !important;
+}
+
+.cbi-section,
+.cbi-map > .cbi-section,
+.fluent-card,
+.ifacebox {
+  background: color-mix(
+    in srgb,
+    var(--fluent-card-bg) calc(var(--fluent-blur-opacity, 0.8) * 100%),
+    transparent
+  ) !important;
+  backdrop-filter: $glass-blur !important;
+  -webkit-backdrop-filter: $glass-blur !important;
+  border: 1px solid color-mix(in srgb, var(--fluent-border) 40%, transparent) !important;
+  border-radius: var(--fluent-radius-xl) !important;
+}

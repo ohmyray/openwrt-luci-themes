@@ -14739,3 +14739,31 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-focus-inner-color: #232136;
 }
 
+body {
+  background-image: linear-gradient(color-mix(in srgb, var(--fluent-bg-page) 62%, transparent), color-mix(in srgb, var(--fluent-bg-page) 78%, transparent)),url("../img/wallpaper.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: var(--fluent-bg-page);
+}
+
+.main-left {
+  background: color-mix(in srgb, var(--fluent-sidebar-bg) calc(var(--fluent-blur-opacity, .8) * 100%), transparent) !important;
+  -webkit-backdrop-filter: blur(var(--fluent-blur-radius, 40px)) saturate(150%) !important;
+  border-inline-end: 1px solid color-mix(in srgb, var(--fluent-border) 45%, transparent) !important;
+}
+
+body > div.main > div.main-right > header {
+  background: color-mix(in srgb, var(--fluent-bg) calc(var(--fluent-blur-opacity, .8) * 100%), transparent) !important;
+  -webkit-backdrop-filter: blur(var(--fluent-blur-radius, 40px)) saturate(150%) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--fluent-border) 45%, transparent) !important;
+}
+
+.cbi-section, .cbi-map > .cbi-section, .fluent-card, .ifacebox {
+  background: color-mix(in srgb, var(--fluent-card-bg) calc(var(--fluent-blur-opacity, .8) * 100%), transparent) !important;
+  -webkit-backdrop-filter: blur(var(--fluent-blur-radius, 40px)) saturate(150%) !important;
+  border: 1px solid color-mix(in srgb, var(--fluent-border) 40%, transparent) !important;
+  border-radius: var(--fluent-radius-xl) !important;
+}
+
