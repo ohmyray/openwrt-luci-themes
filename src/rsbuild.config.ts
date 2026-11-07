@@ -1,7 +1,7 @@
+import { gzipSync } from "node:zlib";
 import { defineConfig, rspack } from "@rsbuild/core";
 import { pluginSass } from "@rsbuild/plugin-sass";
 import { type Compiler, SwcJsMinimizerRspackPlugin } from "@rspack/core";
-import { gzipSync } from "node:zlib";
 import { generateIcons } from "./script/generate-fluent-icons";
 import { generateThemeDefaults } from "./script/generate-theme-defaults";
 
@@ -14,7 +14,7 @@ const minify = process.env.RSBUILD_MINIFY === "true" || process.env.RSBUILD_MINI
 
 export default defineConfig(({ envMode }) => {
   const variant = envMode === "lite" ? "lite" : "full";
-  const packageRoot = variant === "lite" ? "../package/luci-theme-fluent-lite" : "../package/luci-theme-fluent";
+  const packageRoot = variant === "lite" ? "../package/luci-theme-veil-lite" : "../package/luci-theme-veil";
   const menuFeatures = variant === "lite" ? "./web/resources/utils/menu-features-lite.ts" : "./web/resources/utils/menu-features.ts";
 
   return {
@@ -22,8 +22,8 @@ export default defineConfig(({ envMode }) => {
       js: {
         source: {
           entry: {
-            "menu-fluent": "./web/resources/menu-fluent.tsx",
-            "view/fluent-config": variant === "lite" ? "./web/resources/view/fluent-config-lite.tsx" : "./web/resources/view/fluent-config.tsx",
+            "menu-veil": "./web/resources/menu-veil.tsx",
+            "view/veil-config": variant === "lite" ? "./web/resources/view/veil-config-lite.tsx" : "./web/resources/view/veil-config.tsx",
           },
           tsconfigPath: "./tsconfig.json",
         },
@@ -140,12 +140,12 @@ export default defineConfig(({ envMode }) => {
         plugins: [pluginSass()],
         source: {
           entry: {
-            fluent: variant === "lite" ? "./scss/fluent-lite.scss" : "./scss/fluent.scss",
+            fluent: variant === "lite" ? "./scss/veil-lite.scss" : "./scss/veil.scss",
           },
         },
         output: {
           distPath: {
-            root: `${packageRoot}/htdocs/luci-static/fluent/css`,
+            root: `${packageRoot}/htdocs/luci-static/veil/css`,
             css: ".",
             js: ".",
           },
@@ -172,8 +172,8 @@ export default defineConfig(({ envMode }) => {
               name: "RemoveEntryJsPlugin",
               apply(compiler: Compiler) {
                 compiler.hooks.emit.tapAsync("RemoveEntryJsPlugin", (compilation, callback) => {
-                  delete compilation.assets["fluent.js"];
-                  delete compilation.assets["fluent.js.map"];
+                  delete compilation.assets["veil.js"];
+                  delete compilation.assets["veil.js.map"];
                   callback();
                 });
               },
@@ -183,15 +183,15 @@ export default defineConfig(({ envMode }) => {
                 name: "GzipLiteCssPlugin",
                 apply(compiler: Compiler) {
                   compiler.hooks.emit.tapAsync("GzipLiteCssPlugin", (compilation, callback) => {
-                    const asset = compilation.assets["fluent.css"];
+                    const asset = compilation.assets["veil.css"];
                     if (!asset) {
-                      callback(new Error("Expected fluent.css in lite CSS build output"));
+                      callback(new Error("Expected veil.css in lite CSS build output"));
                       return;
                     }
 
                     const source = asset.source();
                     const compressed = gzipSync(Buffer.isBuffer(source) ? source : Buffer.from(source), { level: 9 });
-                    compilation.assets["fluent.css.gz"] = {
+                    compilation.assets["veil.css.gz"] = {
                       source: () => compressed,
                       buffer: () => compressed,
                       size: () => compressed.length,
@@ -201,7 +201,7 @@ export default defineConfig(({ envMode }) => {
                       buffers: () => [compressed],
                       clearCache: () => undefined,
                     };
-                    delete compilation.assets["fluent.css"];
+                    delete compilation.assets["veil.css"];
                     callback();
                   });
                 },

@@ -10,14 +10,14 @@ const luciRequires = `"use strict";
 "require network";
 `;
 const minify = process.env.RSBUILD_MINIFY === "true" || process.env.RSBUILD_MINIFY === "1";
-const outputRoot = "../package/luci-mod-fluentdashboard/htdocs/luci-static/resources";
+const outputRoot = "../package/luci-mod-veil-dashboard/htdocs/luci-static/resources";
 
 export default defineConfig({
   environments: {
     dashboardJs: {
       source: {
         entry: {
-          "view/fluentdashboard/index": "./web/fluentdashboard/index.tsx",
+          "view/veil-dashboard/index": "./web/veil-dashboard/index.tsx",
         },
         tsconfigPath: "./tsconfig.json",
       },
@@ -121,7 +121,7 @@ export default defineConfig({
       plugins: [pluginSass()],
       source: {
         entry: {
-          "view/fluentdashboard/index": "./web/fluentdashboard/index.css",
+          "view/veil-dashboard/index": "./web/veil-dashboard/index.css",
         },
       },
       output: {
@@ -146,8 +146,8 @@ export default defineConfig({
             name: "RemoveDashboardCssEntryJsPlugin",
             apply(compiler: Compiler) {
               compiler.hooks.emit.tapAsync("RemoveDashboardCssEntryJsPlugin", (compilation, callback) => {
-                delete compilation.assets["view/fluentdashboard/index.js"];
-                delete compilation.assets["view/fluentdashboard/index.js.map"];
+                delete compilation.assets["view/veil-dashboard/index.js"];
+                delete compilation.assets["view/veil-dashboard/index.js.map"];
                 callback();
               });
             },

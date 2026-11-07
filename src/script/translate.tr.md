@@ -1,6 +1,6 @@
 # Translation guidance
 
-You are translating luci-theme-fluent LuCI interface copy into Turkish (`tr`).
+You are translating luci-theme-veil LuCI interface copy into Turkish (`tr`).
 
 Translation goals: keep the text concise, natural, and appropriate for a router/web UI while improving terminology accuracy, consistency, and professionalism.
 

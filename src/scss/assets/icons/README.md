@@ -1,7 +1,7 @@
 
 # Fluent icons in SCSS
 
-Icons are resolved from Iconify JSON packages during the rsbuild CSS build and embedded directly into the final `fluent.css` as inline SVG data URIs. No extra asset files are loaded at runtime.
+Icons are resolved from Iconify JSON packages during the rsbuild CSS build and embedded directly into the final `veil.css` as inline SVG data URIs. No extra asset files are loaded at runtime.
 
 Currently supported collections:
 

@@ -36,8 +36,8 @@ const screenshotsDir = path.resolve(screenshotsOutput, ".cache");
 const TRANSLATIONS: Record<string, Record<string, string>> = {
   "zh-Hans": {
     'lang="en-US"': 'lang="zh-Hans"',
-    "<title>luci-theme-fluent Showcase</title>": "<title>luci-theme-fluent 效果图</title>",
-    "<h1>Fluent Theme for OpenWrt</h1>": "<h1>OpenWrt FluentUI 主题</h1>",
+    "<title>luci-theme-veil Showcase</title>": "<title>luci-theme-veil 效果图</title>",
+    "<h1>Veil Theme for OpenWrt</h1>": "<h1>OpenWrt FluentUI 主题</h1>",
     "<p>An elegant, responsive Fluent-style theme for modern OpenWrt LuCI</p>": "<p>专为现代 OpenWrt LuCI 设计的优雅、响应式 Fluent 风格主题</p>",
     "Multi-device": "多设备适配",
     "Fully responsive design for desktop, tablet, and mobile interactions": "完美适配桌面、平板和移动设备，提供极致的响应式交互体验",
@@ -48,8 +48,8 @@ const TRANSLATIONS: Record<string, Record<string, string>> = {
     'alt="Desktop Overview"': 'alt="桌面端概览"',
     'alt="Tablet Overview"': 'alt="平板端概览"',
     'alt="Mobile Overview"': 'alt="移动端概览"',
-    "<title>luci-theme-fluent Mobile Showcase</title>": "<title>luci-theme-fluent 移动端效果图</title>",
-    "<h1>Fluent Theme Mobile Experience</h1>": "<h1>FluentUI 移动端体验</h1>",
+    "<title>luci-theme-veil Mobile Showcase</title>": "<title>luci-theme-veil 移动端效果图</title>",
+    "<h1>Veil Theme Mobile Experience</h1>": "<h1>FluentUI 移动端体验</h1>",
     "<p>Optimized, responsive, and elegant mobile interface for OpenWrt LuCI</p>": "<p>专为 OpenWrt LuCI 优化的响应式、优雅的移动端界面</p>",
     "Intuitive Navigation": "直观导航",
     "Slide-out sidebar drawer designed for quick and easy mobile access": "专为快速便捷的移动端访问设计的侧边栏抽屉",

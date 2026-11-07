@@ -1,6 +1,6 @@
 # Translation guidance
 
-You are translating luci-theme-fluent LuCI interface copy into Polish (`pl`).
+You are translating luci-theme-veil LuCI interface copy into Polish (`pl`).
 
 Translation goals: keep the text concise, natural, and appropriate for a router/web UI while improving terminology accuracy, consistency, and professionalism.
 

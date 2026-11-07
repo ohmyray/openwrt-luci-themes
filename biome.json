@@ -4,11 +4,11 @@
     "includes": [
       "**/*",
       "!src/scss/**/*",
-      "!package/luci-theme-fluent/htdocs/luci-static/resources/view/fluent-config.js",
-      "!package/luci-theme-fluent/htdocs/luci-static/resources/menu-fluent.js",
-      "!package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css",
-      "!package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.js",
-      "!package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.css"
+      "!package/luci-theme-veil/htdocs/luci-static/resources/view/veil-config.js",
+      "!package/luci-theme-veil/htdocs/luci-static/resources/menu-veil.js",
+      "!package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css",
+      "!package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.js",
+      "!package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.css"
     ]
   },
   "vcs": {

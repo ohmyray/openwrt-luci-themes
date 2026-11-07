@@ -20,7 +20,7 @@ export function setupThemeFeatures(): void {
     toggle.setAttribute("data-active-theme", theme);
     toggle.setAttribute("data-mode", mode);
   };
-  const saveMode = L.rpc.declare<{ result: number }, [string]>({ object: "luci.fluent", method: "set_mode", params: ["mode"] });
+  const saveMode = L.rpc.declare<{ result: number }, [string]>({ object: "luci.veil", method: "set_mode", params: ["mode"] });
 
   toggle.hidden = false;
   updateToggle(body.getAttribute("data-theme-mode") || "auto");

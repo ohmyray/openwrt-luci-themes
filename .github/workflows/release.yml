@@ -36,13 +36,13 @@ jobs:
       - name: Sync version files
         run: |
           VERSION="${{ steps.meta.outputs.version }}"
-          sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${VERSION}/" package/luci-theme-fluent/Makefile
-          sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${VERSION}/" package/luci-theme-fluent-lite/Makefile
-          sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${VERSION}/" package/luci-mod-fluentdashboard/Makefile
+          sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${VERSION}/" package/luci-theme-veil/Makefile
+          sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${VERSION}/" package/luci-theme-veil-lite/Makefile
+          sed -i "s/^PKG_VERSION:=.*/PKG_VERSION:=${VERSION}/" package/luci-mod-veil-dashboard/Makefile
           sed -i "s/^  \"version\": \"[^\"]*\",/  \"version\": \"${VERSION}\",/" package.json
-          grep '^PKG_VERSION:=' package/luci-theme-fluent/Makefile
-          grep '^PKG_VERSION:=' package/luci-theme-fluent-lite/Makefile
-          grep '^PKG_VERSION:=' package/luci-mod-fluentdashboard/Makefile
+          grep '^PKG_VERSION:=' package/luci-theme-veil/Makefile
+          grep '^PKG_VERSION:=' package/luci-theme-veil-lite/Makefile
+          grep '^PKG_VERSION:=' package/luci-mod-veil-dashboard/Makefile
           grep '^  "version":' package.json
 
       - name: Commit version bump
@@ -56,7 +56,7 @@ jobs:
           git checkout "$BRANCH"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package/luci-theme-fluent/Makefile package/luci-theme-fluent-lite/Makefile package/luci-mod-fluentdashboard/Makefile package.json
+          git add package/luci-theme-veil/Makefile package/luci-theme-veil-lite/Makefile package/luci-mod-veil-dashboard/Makefile package.json
           if git diff --cached --quiet; then
             echo "Version files already match ${TAG}; nothing to commit."
           else
@@ -103,18 +103,18 @@ jobs:
 
       - name: Verify built assets and lite size reduction
         run: |
-          test -s package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css
-          test -s package/luci-theme-fluent/htdocs/luci-static/resources/menu-fluent.js
-          test -s package/luci-theme-fluent/htdocs/luci-static/resources/view/fluent-config.js
-          test -s package/luci-theme-fluent-lite/htdocs/luci-static/fluent/css/fluent.css.gz
-          test -s package/luci-theme-fluent-lite/htdocs/luci-static/resources/menu-fluent.js
-          test -s package/luci-theme-fluent-lite/htdocs/luci-static/resources/view/fluent-config.js
-          test -s package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.js
-          test -s package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.css
-          grep -q '"require network"' package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.js
-          grep -q 'return main;' package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.js
-          full_size=$(cat package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css package/luci-theme-fluent/htdocs/luci-static/resources/menu-fluent.js package/luci-theme-fluent/htdocs/luci-static/resources/view/fluent-config.js | wc -c)
-          lite_size=$(cat package/luci-theme-fluent-lite/htdocs/luci-static/fluent/css/fluent.css.gz package/luci-theme-fluent-lite/htdocs/luci-static/resources/menu-fluent.js package/luci-theme-fluent-lite/htdocs/luci-static/resources/view/fluent-config.js | wc -c)
+          test -s package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css
+          test -s package/luci-theme-veil/htdocs/luci-static/resources/menu-veil.js
+          test -s package/luci-theme-veil/htdocs/luci-static/resources/view/veil-config.js
+          test -s package/luci-theme-veil-lite/htdocs/luci-static/veil/css/veil.css.gz
+          test -s package/luci-theme-veil-lite/htdocs/luci-static/resources/menu-veil.js
+          test -s package/luci-theme-veil-lite/htdocs/luci-static/resources/view/veil-config.js
+          test -s package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.js
+          test -s package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.css
+          grep -q '"require network"' package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.js
+          grep -q 'return main;' package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.js
+          full_size=$(cat package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css package/luci-theme-veil/htdocs/luci-static/resources/menu-veil.js package/luci-theme-veil/htdocs/luci-static/resources/view/veil-config.js | wc -c)
+          lite_size=$(cat package/luci-theme-veil-lite/htdocs/luci-static/veil/css/veil.css.gz package/luci-theme-veil-lite/htdocs/luci-static/resources/menu-veil.js package/luci-theme-veil-lite/htdocs/luci-static/resources/view/veil-config.js | wc -c)
           test "${lite_size}" -lt "${full_size}"
           echo "Full assets: ${full_size} bytes"
           echo "Lite assets: ${lite_size} bytes"
@@ -124,26 +124,26 @@ jobs:
         with:
           name: fluent-assets-full-${{ env.TAG }}
           path: |
-            package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css
-            package/luci-theme-fluent/htdocs/luci-static/resources/menu-fluent.js
-            package/luci-theme-fluent/htdocs/luci-static/resources/view/fluent-config.js
+            package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css
+            package/luci-theme-veil/htdocs/luci-static/resources/menu-veil.js
+            package/luci-theme-veil/htdocs/luci-static/resources/view/veil-config.js
 
       - name: Upload lite assets
         uses: actions/upload-artifact@v7
         with:
           name: fluent-assets-lite-${{ env.TAG }}
           path: |
-            package/luci-theme-fluent-lite/htdocs/luci-static/fluent/css/fluent.css.gz
-            package/luci-theme-fluent-lite/htdocs/luci-static/resources/menu-fluent.js
-            package/luci-theme-fluent-lite/htdocs/luci-static/resources/view/fluent-config.js
+            package/luci-theme-veil-lite/htdocs/luci-static/veil/css/veil.css.gz
+            package/luci-theme-veil-lite/htdocs/luci-static/resources/menu-veil.js
+            package/luci-theme-veil-lite/htdocs/luci-static/resources/view/veil-config.js
 
       - name: Upload dashboard assets
         uses: actions/upload-artifact@v7
         with:
           name: fluent-dashboard-assets-${{ env.TAG }}
           path: |
-            package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.js
-            package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/index.css
+            package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.js
+            package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/index.css
 
   release:
     name: Build & Publish (${{ matrix.version }}, ${{ matrix.variant }})
@@ -169,19 +169,19 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: fluent-assets-full-${{ env.TAG }}
-          path: package/luci-theme-fluent/htdocs/luci-static
+          path: package/luci-theme-veil/htdocs/luci-static
 
       - name: Download lite assets
         uses: actions/download-artifact@v8
         with:
           name: fluent-assets-lite-${{ env.TAG }}
-          path: package/luci-theme-fluent-lite/htdocs/luci-static
+          path: package/luci-theme-veil-lite/htdocs/luci-static
 
       - name: Download dashboard assets
         uses: actions/download-artifact@v8
         with:
           name: fluent-dashboard-assets-${{ env.TAG }}
-          path: package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard
+          path: package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard
 
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y zstd wget
@@ -189,9 +189,9 @@ jobs:
       - name: Prepare package sources
         run: |
           mkdir -p ${HOME}/builder/packages
-          cp -r "$PWD/package/luci-theme-fluent" "${HOME}/builder/packages/luci-theme-fluent"
-          cp -r "$PWD/package/luci-theme-fluent-lite" "${HOME}/builder/packages/luci-theme-fluent-lite"
-          cp -r "$PWD/package/luci-mod-fluentdashboard" "${HOME}/builder/packages/luci-mod-fluentdashboard"
+          cp -r "$PWD/package/luci-theme-veil" "${HOME}/builder/packages/luci-theme-veil"
+          cp -r "$PWD/package/luci-theme-veil-lite" "${HOME}/builder/packages/luci-theme-veil-lite"
+          cp -r "$PWD/package/luci-mod-veil-dashboard" "${HOME}/builder/packages/luci-mod-veil-dashboard"
 
       - name: Build packages
         run: |
@@ -201,13 +201,13 @@ jobs:
       - name: Collect built packages
         run: |
           mkdir -p release
-          cp ${HOME}/builder/output/luci-theme-fluent${{ matrix.variant == 'lite' && '-lite' || '' }}*.ipk release/ 2>/dev/null || true
-          cp ${HOME}/builder/output/luci-theme-fluent${{ matrix.variant == 'lite' && '-lite' || '' }}*.apk release/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-theme-veil${{ matrix.variant == 'lite' && '-lite' || '' }}*.ipk release/ 2>/dev/null || true
+          cp ${HOME}/builder/output/luci-theme-veil${{ matrix.variant == 'lite' && '-lite' || '' }}*.apk release/ 2>/dev/null || true
           if [ "${{ matrix.variant }}" = "full" ]; then
-            cp ${HOME}/builder/output/luci-mod-fluentdashboard*.ipk release/ 2>/dev/null || true
-            cp ${HOME}/builder/output/luci-mod-fluentdashboard*.apk release/ 2>/dev/null || true
-            cp ${HOME}/builder/output/luci-i18n-fluent*.ipk release/ 2>/dev/null || true
-            cp ${HOME}/builder/output/luci-i18n-fluent*.apk release/ 2>/dev/null || true
+            cp ${HOME}/builder/output/luci-mod-veil-dashboard*.ipk release/ 2>/dev/null || true
+            cp ${HOME}/builder/output/luci-mod-veil-dashboard*.apk release/ 2>/dev/null || true
+            cp ${HOME}/builder/output/luci-i18n-veil*.ipk release/ 2>/dev/null || true
+            cp ${HOME}/builder/output/luci-i18n-veil*.apk release/ 2>/dev/null || true
           fi
           echo "Built packages:"
           ls -lh release/

@@ -2,12 +2,12 @@
 
 set -eu
 
-REPO="LazuliKao/luci-theme-fluent"
+REPO="LazuliKao/luci-theme-veil"
 RELEASE_TAG="${1:-latest}"
 VARIANT="${2:-full}"
 case "${VARIANT}" in
-   full) PKG_NAME="luci-theme-fluent" ;;
-   lite) PKG_NAME="luci-theme-fluent-lite" ;;
+   full) PKG_NAME="luci-theme-veil" ;;
+   lite) PKG_NAME="luci-theme-veil-lite" ;;
    *) echo "Usage: $0 [latest|tag] [full|lite]" >&2; exit 1 ;;
 esac
 PKG_FILE=""

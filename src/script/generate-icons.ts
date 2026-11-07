@@ -4,9 +4,9 @@ import path from "node:path";
 import sharp from "sharp";
 
 // Use relative paths from the repository root
-const svgPath = "./package/luci-theme-fluent/htdocs/luci-static/fluent/img/fluent.svg";
-const iconDir = "./package/luci-theme-fluent/htdocs/luci-static/fluent/icon";
-const themeDir = "./package/luci-theme-fluent/htdocs/luci-static/fluent";
+const svgPath = "./package/luci-theme-veil/htdocs/luci-static/veil/img/veil.svg";
+const iconDir = "./package/luci-theme-veil/htdocs/luci-static/veil/icon";
+const themeDir = "./package/luci-theme-veil/htdocs/luci-static/veil";
 
 interface Target {
   file: string;
@@ -15,15 +15,10 @@ interface Target {
 
 const targets: Target[] = [
   { file: "icon-192.png", size: 192 },
-  { file: "favicon-32.png", size: 32 }
+  { file: "favicon-32.png", size: 32 },
 ];
 
-const keepFiles = new Set<string>([
-  "manifest.json",
-  "favicon.ico",
-  "icon-192.png",
-  "favicon-32.png"
-]);
+const keepFiles = new Set<string>(["manifest.json", "favicon.ico", "icon-192.png", "favicon-32.png"]);
 
 async function generate(): Promise<void> {
   // Check if source SVG exists
@@ -49,7 +44,7 @@ async function generate(): Promise<void> {
         palette: true,
         compressionLevel: 9,
         quality: 85,
-        effort: 10
+        effort: 10,
       })
       .toFile(dest);
   }
@@ -62,7 +57,7 @@ async function generate(): Promise<void> {
       palette: true,
       compressionLevel: 9,
       quality: 85,
-      effort: 10
+      effort: 10,
     })
     .toFile(path.join(themeDir, "favicon.ico"));
 
@@ -74,7 +69,7 @@ async function generate(): Promise<void> {
       palette: true,
       compressionLevel: 9,
       quality: 85,
-      effort: 10
+      effort: 10,
     })
     .toFile(path.join(iconDir, "favicon.ico"));
 

@@ -1,6 +1,6 @@
 # 翻译额外信息
 
-你正在翻译 luci-theme-fluent 的 LuCI 界面文案，目标语言为简体中文。
+你正在翻译 luci-theme-veil 的 LuCI 界面文案，目标语言为简体中文。
 
 翻译目标：在保持简洁、自然、适合 UI 的风格基础上，提高术语准确性、一致性和专业度。译文应像正式 OpenWrt / LuCI 设置界面中的中文文案，而不是解释性说明文。
 
@@ -17,7 +17,7 @@
    - Fluent 不翻译
    - FluentUI 不翻译
    - View Transition API 不翻译
-8. `luci-theme-fluent` 如果作为包名或项目名出现，保留原文；如果是在自然描述中指主题本身，可译为“Fluent 主题”。
+8. `luci-theme-veil` 如果作为包名或项目名出现，保留原文；如果是在自然描述中指主题本身，可译为“Fluent 主题”。
 9. 保留所有变量、占位符和格式符，例如 `%s`，不得改动、遗漏或翻译。
 10. 中文与英文、数字之间适当留空格，例如：
     - Fluent 主题
@@ -29,7 +29,7 @@
 
 请严格遵循以下术语：
 
-- luci-theme-fluent：Fluent 主题；作为包名或项目名时保留 `luci-theme-fluent`
+- luci-theme-veil：Fluent 主题；作为包名或项目名时保留 `luci-theme-veil`
 - FluentUI：FluentUI
 - Fluent：Fluent
 - LuCI：LuCI

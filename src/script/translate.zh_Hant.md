@@ -1,6 +1,6 @@
 # Translation guidance
 
-You are translating luci-theme-fluent LuCI interface copy into Traditional Chinese (`zh_Hant`).
+You are translating luci-theme-veil LuCI interface copy into Traditional Chinese (`zh_Hant`).
 
 Translation goals: keep the text concise, natural, and appropriate for a router/web UI while improving terminology accuracy, consistency, and professionalism. The result should read like polished OpenWrt / LuCI Traditional Chinese interface copy.
 

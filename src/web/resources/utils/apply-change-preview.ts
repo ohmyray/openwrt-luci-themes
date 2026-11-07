@@ -259,7 +259,7 @@ export function setupApplyChangePreview(): void {
     const token = ++nextToken;
     activeRequest = null;
 
-    const configValue = L.uci.get_first("fluent", "global", "uci_changes_preview");
+    const configValue = L.uci.get_first("veil", "global", "uci_changes_preview");
     if (configValue === "1" || configValue === null || configValue === undefined) {
       const cachedEntries = changeEntries(changes.changes);
       activeRequest = { token, changes: cachedEntries.length ? cachedEntries : null, preview: null };

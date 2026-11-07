@@ -1,7 +1,7 @@
 import { applyInlineGeometryToStyle, getEffectiveDocumentDirection, getInlinePadding, getRectInlineStart, getViewportInlineSize, type InlineGeometry } from "./direction";
 
 /**
- * Fluent Theme Features Initialization Module
+ * Veil Theme Features Initialization Module
  * Handles dark mode toggle, top loading bar behavior, sliding tab indicator,
  * and accessibility prefers-reduced-motion preferences.
  */
@@ -44,7 +44,7 @@ export function setupThemeFeatures() {
     };
   }
 
-  const callFluentSetMode = L.rpc.declare<{ result: number }, [string]>({ object: "luci.fluent", method: "set_mode", params: ["mode"] });
+  const callFluentSetMode = L.rpc.declare<{ result: number }, [string]>({ object: "luci.veil", method: "set_mode", params: ["mode"] });
   // ============================================================
   // 1. ACCESSIBILITY: PREFERS REDUCED MOTION SETTINGS
   // ============================================================

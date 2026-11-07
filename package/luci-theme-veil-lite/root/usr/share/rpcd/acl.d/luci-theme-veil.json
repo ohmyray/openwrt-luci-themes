@@ -1,0 +1,23 @@
+{
+	"luci-theme-veil": {
+		"description": "Grant UCI and file access for luci-theme-veil-lite config view",
+		"read": {
+			"file": {
+				"/www/luci-static/veil/background/*": [ "list" ]
+			},
+			"ubus": {
+				"luci.veil": [ "avail", "remove", "rename", "set_mode" ]
+			},
+			"uci": [ "veil" ]
+		},
+		"write": {
+			"file": {
+				"/tmp/veil_background.tmp": [ "write" ]
+			},
+			"ubus": {
+				"luci.veil": [ "set_mode" ]
+			},
+			"uci": [ "veil" ]
+		}
+	}
+}

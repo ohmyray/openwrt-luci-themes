@@ -1,8 +1,8 @@
 type MenuNode = LuCI.ui.menu.MenuNode;
 
-const MENU_CACHE_KEY = "fluent_menu_cache";
-const SIDEBAR_HTML_CACHE_KEY = "fluent_sidebar_html";
-const TABMENU_HTML_CACHE_KEY = "fluent_tabmenu_html";
+const MENU_CACHE_KEY = "veil_menu_cache";
+const SIDEBAR_HTML_CACHE_KEY = "veil_sidebar_html";
+const TABMENU_HTML_CACHE_KEY = "veil_tabmenu_html";
 
 function getScopedCacheKey(cacheKey: string): string | null {
   const scope = document.body?.getAttribute("data-menu-cache-scope");

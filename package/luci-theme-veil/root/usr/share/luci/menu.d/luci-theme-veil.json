@@ -1,0 +1,14 @@
+{
+	"admin/system/veil-config": {
+		"title": "Veil Theme",
+		"order": 90,
+		"action": {
+			"type": "view",
+			"path": "veil-config"
+		},
+		"depends": {
+			"acl": [ "luci-theme-veil" ],
+			"uci": { "veil": true }
+		}
+	}
+}

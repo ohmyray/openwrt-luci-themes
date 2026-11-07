@@ -45,37 +45,37 @@ def main():
     files = os.listdir(args.dir)
     
     themes = {
-        'full': {'package': 'luci-theme-fluent', 'ipk': None, 'apk': None},
-        'lite': {'package': 'luci-theme-fluent-lite', 'ipk': None, 'apk': None},
+        'full': {'package': 'luci-theme-veil', 'ipk': None, 'apk': None},
+        'lite': {'package': 'luci-theme-veil-lite', 'ipk': None, 'apk': None},
     }
-    dashboard = {'package': 'luci-mod-fluentdashboard', 'ipk': None, 'apk': None}
+    dashboard = {'package': 'luci-mod-veil-dashboard', 'ipk': None, 'apk': None}
     dashboard_i18n = {'ipk': None, 'apk': None}
     i18n_data = {}  # lang_code -> {'ipk': filename, 'apk': filename}
 
     for f in files:
-        if f.startswith('luci-mod-fluentdashboard_') or f.startswith('luci-mod-fluentdashboard-'):
+        if f.startswith('luci-mod-veil-dashboard_') or f.startswith('luci-mod-veil-dashboard-'):
             if f.endswith('.ipk'):
                 dashboard['ipk'] = f
             elif f.endswith('.apk'):
                 dashboard['apk'] = f
-        elif f.startswith('luci-i18n-fluentdashboard-zh-cn_') or f.startswith('luci-i18n-fluentdashboard-zh-cn-'):
+        elif f.startswith('luci-i18n-veil-dashboard-zh-cn_') or f.startswith('luci-i18n-veil-dashboard-zh-cn-'):
             if f.endswith('.ipk'):
                 dashboard_i18n['ipk'] = f
             elif f.endswith('.apk'):
                 dashboard_i18n['apk'] = f
-        elif f.startswith('luci-theme-fluent-lite_') or f.startswith('luci-theme-fluent-lite-'):
+        elif f.startswith('luci-theme-veil-lite_') or f.startswith('luci-theme-veil-lite-'):
             if f.endswith('.ipk'):
                 themes['lite']['ipk'] = f
             elif f.endswith('.apk'):
                 themes['lite']['apk'] = f
-        elif f.startswith('luci-theme-fluent_') or f.startswith('luci-theme-fluent-'):
+        elif f.startswith('luci-theme-veil_') or f.startswith('luci-theme-veil-'):
             if f.endswith('.ipk'):
                 themes['full']['ipk'] = f
             elif f.endswith('.apk'):
                 themes['full']['apk'] = f
-        elif f.startswith('luci-i18n-fluent'):
-            # Match ipk (e.g. luci-i18n-fluent-zh-hans_1.0.6-1_all.ipk)
-            ipk_match = re.match(r'^luci-i18n-fluent-([a-zA-Z_-]+)_(.+)_all\.ipk$', f)
+        elif f.startswith('luci-i18n-veil'):
+            # Match ipk (e.g. luci-i18n-veil-zh-hans_1.0.6-1_all.ipk)
+            ipk_match = re.match(r'^luci-i18n-veil-([a-zA-Z_-]+)_(.+)_all\.ipk$', f)
             if ipk_match:
                 lang = ipk_match.group(1).lower()
                 if lang not in i18n_data:
@@ -83,8 +83,8 @@ def main():
                 i18n_data[lang]['ipk'] = f
                 continue
             
-            # Match apk (e.g. luci-i18n-fluent-zh-hans-1.0.6-r1.apk)
-            apk_match = re.match(r'^luci-i18n-fluent-([a-zA-Z_-]+)-([0-9].*)\.apk$', f)
+            # Match apk (e.g. luci-i18n-veil-zh-hans-1.0.6-r1.apk)
+            apk_match = re.match(r'^luci-i18n-veil-([a-zA-Z_-]+)-([0-9].*)\.apk$', f)
             if apk_match:
                 lang = apk_match.group(1).lower()
                 if lang not in i18n_data:
@@ -102,11 +102,11 @@ def main():
         md.append(f"## LuCI Theme Fluent {args.tag}\n")
 
     md.append("### Packages")
-    md.append("- `luci-theme-fluent` — Full FluentUI theme for OpenWrt LuCI")
-    md.append("- `luci-theme-fluent-lite` — Core FluentUI theme without optional enhancements (mutually exclusive with full)")
-    md.append("- `luci-mod-fluentdashboard` — Theme-independent dashboard that can coexist with `luci-mod-dashboard`")
-    md.append("- `luci-i18n-fluentdashboard-zh-cn` — Simplified Chinese dashboard translation")
-    md.append("- `luci-i18n-fluent` — Translations\n")
+    md.append("- `luci-theme-veil` — Full FluentUI theme for OpenWrt LuCI")
+    md.append("- `luci-theme-veil-lite` — Core FluentUI theme without optional enhancements (mutually exclusive with full)")
+    md.append("- `luci-mod-veil-dashboard` — Theme-independent dashboard that can coexist with `luci-mod-dashboard`")
+    md.append("- `luci-i18n-veil-dashboard-zh-cn` — Simplified Chinese dashboard translation")
+    md.append("- `luci-i18n-veil` — Translations\n")
 
     # Add Downloads Section
     md.append("### Downloads\n")
@@ -132,8 +132,8 @@ def main():
     dashboard_i18n_apk_link = f"[Download (apk)]({base_url}/{dashboard_i18n['apk']})" if dashboard_i18n['apk'] else "-"
     md.append(f"| **OpenWrt 24.10.x (ipk)** | `{dashboard['package']}` | {dashboard_ipk_link} |")
     md.append(f"| **OpenWrt 25.12.x (apk)** | `{dashboard['package']}` | {dashboard_apk_link} |")
-    md.append(f"| **OpenWrt 24.10.x (ipk)** | `luci-i18n-fluentdashboard-zh-cn` | {dashboard_i18n_ipk_link} |")
-    md.append(f"| **OpenWrt 25.12.x (apk)** | `luci-i18n-fluentdashboard-zh-cn` | {dashboard_i18n_apk_link} |")
+    md.append(f"| **OpenWrt 24.10.x (ipk)** | `luci-i18n-veil-dashboard-zh-cn` | {dashboard_i18n_ipk_link} |")
+    md.append(f"| **OpenWrt 25.12.x (apk)** | `luci-i18n-veil-dashboard-zh-cn` | {dashboard_i18n_apk_link} |")
         
     md.append("\n")
 
@@ -158,15 +158,15 @@ def main():
     md.append("### Installation\n")
     md.append("**OpenWrt 24.10.x (opkg/ipk):**")
     md.append("```bash")
-    md.append("opkg install luci-theme-fluent_*.ipk  # Full (default)")
-    md.append("opkg install luci-theme-fluent-lite_*.ipk  # Lite")
-    md.append("opkg install luci-mod-fluentdashboard_*.ipk")
+    md.append("opkg install luci-theme-veil_*.ipk  # Full (default)")
+    md.append("opkg install luci-theme-veil-lite_*.ipk  # Lite")
+    md.append("opkg install luci-mod-veil-dashboard_*.ipk")
     md.append("```\n")
     md.append("**OpenWrt 25.12.x (apk):**")
     md.append("```bash")
-    md.append("apk add luci-theme-fluent-*.apk  # Full (default)")
-    md.append("apk add luci-theme-fluent-lite-*.apk  # Lite")
-    md.append("apk add luci-mod-fluentdashboard-*.apk")
+    md.append("apk add luci-theme-veil-*.apk  # Full (default)")
+    md.append("apk add luci-theme-veil-lite-*.apk  # Lite")
+    md.append("apk add luci-mod-veil-dashboard-*.apk")
     md.append("```")
     md.append("\nInstall only one theme variant at a time.")
 

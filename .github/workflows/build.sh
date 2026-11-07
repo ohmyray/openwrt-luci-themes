@@ -11,8 +11,8 @@ set -e
 VERSION="${1:?Usage: build.sh <version> <full|lite>}"
 VARIANT="${2:?Usage: build.sh <version> <full|lite>}"
 case "${VARIANT}" in
-  full) PACKAGE="luci-theme-fluent" ;;
-  lite) PACKAGE="luci-theme-fluent-lite" ;;
+  full) PACKAGE="luci-theme-veil" ;;
+  lite) PACKAGE="luci-theme-veil-lite" ;;
   *) echo "ERROR: variant must be full or lite" >&2; exit 1 ;;
 esac
 SDK_BASE_URL="https://downloads.openwrt.org/releases/${VERSION}/targets/x86/64"
@@ -102,8 +102,8 @@ done
 echo ">>> Running defconfig..."
 echo "CONFIG_PACKAGE_${PACKAGE}=m" >> .config
 if [ "${VARIANT}" = "full" ]; then
-  echo "CONFIG_PACKAGE_luci-mod-fluentdashboard=m" >> .config
-  echo "CONFIG_PACKAGE_luci-i18n-fluentdashboard-zh-cn=m" >> .config
+  echo "CONFIG_PACKAGE_luci-mod-veil-dashboard=m" >> .config
+  echo "CONFIG_PACKAGE_luci-i18n-veil-dashboard-zh-cn=m" >> .config
 fi
 make defconfig
 
@@ -112,7 +112,7 @@ echo ">>> Building packages..."
 if [ "${VARIANT}" = "full" ]; then
   make -j$(nproc) V=s BUILD_LOG=1 \
     "package/${PACKAGE}/compile" \
-    "package/luci-mod-fluentdashboard/compile"
+    "package/luci-mod-veil-dashboard/compile"
 else
   make -j$(nproc) V=s BUILD_LOG=1 \
     "package/${PACKAGE}/compile"
@@ -123,20 +123,20 @@ echo ">>> Collecting ${PKG_EXT} files..."
 mkdir -p "${OUTPUT_DIR}"
 find bin -name "${PACKAGE}*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
 if [ "${VARIANT}" = "full" ]; then
-  find bin -name "luci-mod-fluentdashboard*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
-  find bin -name "luci-i18n-fluent*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
+  find bin -name "luci-mod-veil-dashboard*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
+  find bin -name "luci-i18n-veil*.${PKG_EXT}" -exec cp {} "${OUTPUT_DIR}/" \;
 fi
 if ! find "${OUTPUT_DIR}" -maxdepth 1 -name "${PACKAGE}*.${PKG_EXT}" -print -quit | grep -q .; then
   echo "ERROR: ${PACKAGE} .${PKG_EXT} was not produced" >&2
   exit 1
 fi
 if [ "${VARIANT}" = "full" ]; then
-  if ! find "${OUTPUT_DIR}" -maxdepth 1 -name "luci-mod-fluentdashboard*.${PKG_EXT}" -print -quit | grep -q .; then
-    echo "ERROR: luci-mod-fluentdashboard .${PKG_EXT} was not produced" >&2
+  if ! find "${OUTPUT_DIR}" -maxdepth 1 -name "luci-mod-veil-dashboard*.${PKG_EXT}" -print -quit | grep -q .; then
+    echo "ERROR: luci-mod-veil-dashboard .${PKG_EXT} was not produced" >&2
     exit 1
   fi
-  if ! find "${OUTPUT_DIR}" -maxdepth 1 -name "luci-i18n-fluentdashboard-zh-cn*.${PKG_EXT}" -print -quit | grep -q .; then
-    echo "ERROR: luci-i18n-fluentdashboard-zh-cn .${PKG_EXT} was not produced" >&2
+  if ! find "${OUTPUT_DIR}" -maxdepth 1 -name "luci-i18n-veil-dashboard-zh-cn*.${PKG_EXT}" -print -quit | grep -q .; then
+    echo "ERROR: luci-i18n-veil-dashboard-zh-cn .${PKG_EXT} was not produced" >&2
     exit 1
   fi
 fi

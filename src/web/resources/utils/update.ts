@@ -85,23 +85,23 @@ export const callGetVersion = rpc.declare<{
   i18n_zh_cn_installed?: boolean;
   installed_i18n?: string[];
 }>({
-  object: "luci.fluent",
+  object: "luci.veil",
   method: "get_version",
 });
 
 export const callStartDownload = rpc.declare<{ result: number; message?: string }, [string, string?, string?]>({
-  object: "luci.fluent",
+  object: "luci.veil",
   method: "start_download",
   params: ["url", "i18n_url", "i18n_urls"],
 });
 
 export const callCheckDownload = rpc.declare<{ size: number; running: boolean; code?: number }>({
-  object: "luci.fluent",
+  object: "luci.veil",
   method: "check_download",
 });
 
 export const callDoInstall = rpc.declare<{ result: number; message?: string }, [string, string?, string?]>({
-  object: "luci.fluent",
+  object: "luci.veil",
   method: "do_install",
   params: ["hash", "i18n_hash", "i18n_hashes"],
 });
@@ -123,11 +123,11 @@ export function matchI18nAsset(assets: ReleaseAsset[], lang: string, pkgType: "i
   for (const asset of assets) {
     const name = String(asset.name || "").toLowerCase();
     if (pkgType === "apk") {
-      if (name.startsWith(`luci-i18n-fluent-${normLang}-`) && name.endsWith(".apk")) {
+      if (name.startsWith(`luci-i18n-veil-${normLang}-`) && name.endsWith(".apk")) {
         return asset;
       }
     } else {
-      if ((name.startsWith(`luci-i18n-fluent-${normLang}_`) || name.startsWith(`luci-i18n-fluent-${normLang}-`)) && name.endsWith(".ipk")) {
+      if ((name.startsWith(`luci-i18n-veil-${normLang}_`) || name.startsWith(`luci-i18n-veil-${normLang}-`)) && name.endsWith(".ipk")) {
         return asset;
       }
     }
@@ -139,7 +139,7 @@ export function matchI18nAsset(assets: ReleaseAsset[], lang: string, pkgType: "i
  * Fetch the latest release details from GitHub API
  */
 export async function fetchLatestRelease(channel: "stable" | "nightly", pkgType: "ipk" | "apk", installedI18n: string[] = [], token?: string): Promise<ReleaseInfo> {
-  const url = channel === "nightly" ? "https://api.github.com/repos/LazuliKao/luci-theme-fluent/releases/tags/nightly" : "https://api.github.com/repos/LazuliKao/luci-theme-fluent/releases/latest";
+  const url = channel === "nightly" ? "https://api.github.com/repos/LazuliKao/luci-theme-veil/releases/tags/nightly" : "https://api.github.com/repos/LazuliKao/luci-theme-veil/releases/latest";
 
   const headers: Record<string, string> = {};
   if (token) {
@@ -164,9 +164,9 @@ export async function fetchLatestRelease(channel: "stable" | "nightly", pkgType:
 
   for (const asset of assets) {
     const name = String(asset.name || "");
-    if (pkgType === "apk" && /^luci-theme-fluent-[0-9].*\.apk$/.test(name)) {
+    if (pkgType === "apk" && /^luci-theme-veil-[0-9].*\.apk$/.test(name)) {
       package_asset = asset;
-    } else if (pkgType === "ipk" && /^luci-theme-fluent_[^/]+\.ipk$/.test(name)) {
+    } else if (pkgType === "ipk" && /^luci-theme-veil_[^/]+\.ipk$/.test(name)) {
       package_asset = asset;
     }
   }

@@ -16,7 +16,7 @@
 import { globSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 
-const UCODE_GLOB = "package/luci-theme-fluent/ucode/template/themes/fluent/*.ut";
+const UCODE_GLOB = "package/luci-theme-veil/ucode/template/themes/veil/*.ut";
 const EXTRA_STRINGS_PATH = "src/script/.cache/extra-strings.js";
 const EXTRACT_RE = /\{\{\s*_\(['"]([^'"]+)['"]\)\s*\}\}/g;
 
@@ -85,7 +85,7 @@ async function fetchStandardStrings(): Promise<Set<string>> {
   return parsePoMsgids(content);
 }
 
-const MENU_JSON_GLOB = "package/luci-theme-fluent/root/usr/share/luci/menu.d/*.json";
+const MENU_JSON_GLOB = "package/luci-theme-veil/root/usr/share/luci/menu.d/*.json";
 
 /** Extract all unique translatable strings from ucode templates and menu.d JSON configurations. */
 function extractAll(): string[] {

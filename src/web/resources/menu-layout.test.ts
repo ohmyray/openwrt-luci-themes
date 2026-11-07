@@ -416,8 +416,8 @@ test("configured moved items keep the active list-item and submenu classes requi
   });
   Object.assign(ui, { createHandlerFn: () => () => undefined });
 
-  // menu-fluent reads LuCI globals during module evaluation, so the test imports it after installing the harness.
-  const { main } = await import("./menu-fluent");
+  // menu-veil reads LuCI globals during module evaluation, so the test imports it after installing the harness.
+  const { main } = await import("./menu-veil");
   const presentation = {
     categories: [
       {

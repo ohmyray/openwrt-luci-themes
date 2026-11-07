@@ -1,4 +1,4 @@
-// About and Update Manager Styles for Fluent Theme
+// About and Update Manager Styles for Veil Theme
 
 .fluent-about-manager {
   max-width: 600px;
@@ -80,14 +80,14 @@
   margin: 8px 0;
 }
 
-.fluent-update-controls {
+.veil-update-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
 
-  .fluent-update-channel-selector {
+  .veil-update-channel-selector {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -105,7 +105,7 @@
   }
 }
 
-.fluent-update-status {
+.veil-update-status {
   font-size: 13px;
   padding: 8px 12px;
   border-radius: var(--fluent-radius-sm);
@@ -134,7 +134,7 @@
   }
 }
 
-.fluent-update-card {
+.veil-update-card {
   padding: 12px;
   border: 1px solid var(--fluent-border);
   border-radius: var(--fluent-radius-sm);
@@ -143,12 +143,12 @@
   flex-direction: column;
   gap: 12px;
 
-  .fluent-update-header {
+  .veil-update-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    .fluent-update-badge {
+    .veil-update-badge {
       background-color: var(--fluent-primary);
       color: #fff;
       padding: 2px 8px;
@@ -157,13 +157,13 @@
       font-weight: 600;
     }
 
-    .fluent-update-date {
+    .veil-update-date {
       font-size: 12px;
       color: var(--fluent-text-secondary);
     }
   }
 
-  .fluent-update-changelog {
+  .veil-update-changelog {
     margin: 0;
     padding: 8px;
     font-family: inherit;
@@ -177,12 +177,12 @@
     white-space: pre-wrap;
   }
 
-  .fluent-update-footer {
+  .veil-update-footer {
     display: flex;
     justify-content: flex-end;
   }
 
-  .fluent-update-success {
+  .veil-update-success {
     text-align: center;
     padding: 8px 0;
 

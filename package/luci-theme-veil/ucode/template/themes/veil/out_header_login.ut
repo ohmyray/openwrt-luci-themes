@@ -1,0 +1,11 @@
+{#
+  Veil Theme for LuCI - Login Header Wrapper
+  Licensed to the public under the Apache License 2.0
+#}
+
+{%
+  if (!ctx.template_header_sent) {
+    include("themes/veil/header_login");
+    ctx.template_header_sent = true;
+  }
+%}

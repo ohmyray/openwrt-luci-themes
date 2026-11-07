@@ -1,19 +1,19 @@
 <div align="center">
-<img src="./package/luci-theme-fluent/htdocs/luci-static/fluent/img/fluent.svg" alt="luci-theme-fluent" width="96" />
+<img src="./package/luci-theme-veil/htdocs/luci-static/veil/img/veil.svg" alt="luci-theme-veil" width="96" />
 
-# luci-theme-fluent
+# luci-theme-veil
 
 一款受 FluentUI 启发的 OpenWrt LuCI 主题,基于 Rsbuild,使用纯 TypeScript/TSX、SCSS、CSS 自定义属性与 ucode 模板构建。
 
 [![license](https://img.shields.io/badge/license-Apache_2.0-blue.svg?style=flat-square)](./LICENSE)
-[![Forum](https://img.shields.io/badge/Forum-OpenWrt-00a2e8.svg?style=flat-square)](https://forum.openwrt.org/t/luci-theme-fluent-fluent-theme-for-openwrt/251341)
+[![Forum](https://img.shields.io/badge/Forum-OpenWrt-00a2e8.svg?style=flat-square)](https://forum.openwrt.org/t/luci-theme-veil-fluent-theme-for-openwrt/251341)
 [![pnpm](https://img.shields.io/badge/pnpm-10.12.4-f69220.svg?style=flat-square)](./package.json)
 [![OpenWrt](https://img.shields.io/badge/OpenWrt-%3E23.05-00a2e8.svg?style=flat-square)](https://openwrt.org/)
 [![Chrome](https://img.shields.io/badge/Chrome-%3E%3D125-4285f4.svg?style=flat-square)](https://www.google.com/chrome/)
 [![Safari](https://img.shields.io/badge/Safari-%3E%3D26-999999.svg?style=flat-square)](https://www.apple.com/safari/)
 [![Firefox](https://img.shields.io/badge/Firefox-%3E%3D147-e66000.svg?style=flat-square)](https://www.mozilla.org/firefox/)
-[![release](https://img.shields.io/github/v/release/LazuliKao/luci-theme-fluent?style=flat-square)](https://github.com/LazuliKao/luci-theme-fluent/releases)
-[![downloads](https://img.shields.io/github/downloads/LazuliKao/luci-theme-fluent/total?style=flat-square)](https://github.com/LazuliKao/luci-theme-fluent/releases)
+[![release](https://img.shields.io/github/v/release/LazuliKao/luci-theme-veil?style=flat-square)](https://github.com/LazuliKao/luci-theme-veil/releases)
+[![downloads](https://img.shields.io/github/downloads/LazuliKao/luci-theme-veil/total?style=flat-square)](https://github.com/LazuliKao/luci-theme-veil/releases)
 
 **简体中文** | [English](./README.md)
 
@@ -46,7 +46,7 @@
 - 使用 ucode 模板渲染 LuCI 页头、页脚与登录页。
 - 提供主题设置界面,可配置颜色、动画与登录页外观。
 - 针对特定插件页面提供结构化的样式覆盖。
-- 提供可选且不依赖主题的 `luci-mod-fluentdashboard` 状态概览。
+- 提供可选且不依赖主题的 `luci-mod-veil-dashboard` 状态概览。
 
 ## 快速上手
 
@@ -55,13 +55,13 @@
 脚本会自动检测 `opkg` / `apk`,默认安装最新正式版:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/LazuliKao/luci-theme-fluent/main/install.sh | sh
+wget -qO- https://raw.githubusercontent.com/LazuliKao/luci-theme-veil/main/install.sh | sh
 ```
 
 安装每日构建版(nightly):
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/LazuliKao/luci-theme-fluent/main/install.sh | sh -s nightly
+wget -qO- https://raw.githubusercontent.com/LazuliKao/luci-theme-veil/main/install.sh | sh -s nightly
 ```
 
 安装完成后,在 LuCI 界面中进入 `系统 -> Fluent 主题` 即可配置。
@@ -69,17 +69,17 @@ wget -qO- https://raw.githubusercontent.com/LazuliKao/luci-theme-fluent/main/ins
 ### 手动安装
 
 1. 打开发布页面,下载与你的系统匹配的软件包:
-   - 正式版:<https://github.com/LazuliKao/luci-theme-fluent/releases>
-   - 每日构建版:<https://github.com/LazuliKao/luci-theme-fluent/releases/tag/nightly>
+   - 正式版:<https://github.com/LazuliKao/luci-theme-veil/releases>
+   - 每日构建版:<https://github.com/LazuliKao/luci-theme-veil/releases/tag/nightly>
 2. 将下载的文件上传到路由器,例如 `/tmp/` 目录。
 3. 使用对应的包管理器进行安装:
 
 ```bash
 # OpenWrt 24.10.x
-opkg install /tmp/luci-theme-fluent_*.ipk
+opkg install /tmp/luci-theme-veil_*.ipk
 
 # OpenWrt 25.12.x
-apk add --allow-untrusted /tmp/luci-theme-fluent-*.apk
+apk add --allow-untrusted /tmp/luci-theme-veil-*.apk
 ```
 
 ### 从 OpenWrt 源码树安装
@@ -90,9 +90,9 @@ apk add --allow-untrusted /tmp/luci-theme-fluent-*.apk
 
 ```bash
 cd openwrt
-git clone --depth=1 https://github.com/LazuliKao/luci-theme-fluent.git /tmp/luci-theme-fluent
+git clone --depth=1 https://github.com/LazuliKao/luci-theme-veil.git /tmp/luci-theme-veil
 # OpenWrt 要求软件包目录直接位于 `package/` 下。
-cp -a /tmp/luci-theme-fluent/package/luci-theme-fluent package/
+cp -a /tmp/luci-theme-veil/package/luci-theme-veil package/
 ```
 
 #### 方法二：添加到 feeds
@@ -100,7 +100,7 @@ cp -a /tmp/luci-theme-fluent/package/luci-theme-fluent package/
 在 `feeds.conf.default` 中添加以下行：
 
 ```text
-src-git fluent https://github.com/LazuliKao/luci-theme-fluent.git
+src-git fluent https://github.com/LazuliKao/luci-theme-veil.git
 ```
 
 然后更新并安装 feed：
@@ -116,18 +116,18 @@ src-git fluent https://github.com/LazuliKao/luci-theme-fluent.git
 make menuconfig
 ```
 
-选择 `LuCI -> Themes -> luci-theme-fluent`，然后像往常一样构建固件或软件包即可。
+选择 `LuCI -> Themes -> luci-theme-veil`，然后像往常一样构建固件或软件包即可。
 
 ### Fluent 状态概览
 
-`luci-mod-fluentdashboard` 是适用于 OpenWrt 24.10 和 25.12 的可选固定卡片式状态概览。它使用独立的 `admin/fluentdashboard` 路由，可配合任意 LuCI 主题使用，也可以与官方 `luci-mod-dashboard` 同时安装。
+`luci-mod-veil-dashboard` 是适用于 OpenWrt 24.10 和 25.12 的可选固定卡片式状态概览。它使用独立的 `admin/veil-dashboard` 路由，可配合任意 LuCI 主题使用，也可以与官方 `luci-mod-dashboard` 同时安装。
 
 ```bash
 # OpenWrt 24.10.x
-opkg install /tmp/luci-mod-fluentdashboard_*.ipk
+opkg install /tmp/luci-mod-veil-dashboard_*.ipk
 
 # OpenWrt 25.12.x
-apk add --allow-untrusted /tmp/luci-mod-fluentdashboard-*.apk
+apk add --allow-untrusted /tmp/luci-mod-veil-dashboard-*.apk
 ```
 
 该模块显示系统、内存与存储、WAN、接口流量、无线、DHCP 租约及无线客户端信息。其资源和简体中文翻译软件包均与主题独立构建。
@@ -141,7 +141,7 @@ apk add --allow-untrusted /tmp/luci-mod-fluentdashboard-*.apk
 - 动画行为
 - 登录页外观
 
-设置界面实现位于 `src/web/resources/view/fluent-config.tsx`。
+设置界面实现位于 `src/web/resources/view/veil-config.tsx`。
 
 ## 开发指南
 
@@ -174,19 +174,19 @@ pnpm run i18n:dashboard
 
 ### 输出路径
 
-- CSS:`package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css`
-- JS:`package/luci-theme-fluent/htdocs/luci-static/resources/`
-- 状态概览：`package/luci-mod-fluentdashboard/htdocs/luci-static/resources/view/fluentdashboard/`
+- CSS:`package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css`
+- JS:`package/luci-theme-veil/htdocs/luci-static/resources/`
+- 状态概览：`package/luci-mod-veil-dashboard/htdocs/luci-static/resources/view/veil-dashboard/`
 这些 CSS 和 JavaScript 文件由构建生成，请勿直接编辑。
 
 ### 项目结构
 
 ```text
-luci-theme-fluent/
-├── package/luci-theme-fluent/htdocs/luci-static/fluent/
-├── package/luci-theme-fluent/ucode/template/themes/fluent/
-├── package/luci-theme-fluent/root/etc/uci-defaults/
-├── package/luci-theme-fluent/Makefile
+luci-theme-veil/
+├── package/luci-theme-veil/htdocs/luci-static/veil/
+├── package/luci-theme-veil/ucode/template/themes/veil/
+├── package/luci-theme-veil/root/etc/uci-defaults/
+├── package/luci-theme-veil/Makefile
 ├── src/scss/
 ├── src/web/resources/
 └── package.json
@@ -194,7 +194,7 @@ luci-theme-fluent/
 
 ### 源码布局
 
-- `src/scss/fluent.scss` 是 Sass 的主入口文件。
+- `src/scss/veil.scss` 是 Sass 的主入口文件。
 - `src/scss/components/` 存放可复用的组件样式。
 - `src/scss/layouts/` 存放页面级布局样式。
 - `src/scss/overrides/` 存放针对特定插件的样式覆盖。

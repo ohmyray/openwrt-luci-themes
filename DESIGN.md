@@ -11,9 +11,9 @@ Luci-Theme-Fluent is a modern, FluentUI-inspired theme for OpenWrt's LuCI web in
 ### Directory Structure
 
 ```
-luci-theme-fluent/
+luci-theme-veil/
 ├── package/
-│   └── luci-theme-fluent/
+│   └── luci-theme-veil/
 │       ├── htdocs/luci-static/
 │       │   ├── fluent/
 │       │   │   ├── background/          # User-uploaded background images
@@ -21,10 +21,10 @@ luci-theme-fluent/
 │       │   │   ├── icon/                # Theme icons
 │       │   │   └── img/                 # Theme images (logo, placeholders)
 │       │   └── resources/
-│       │       ├── menu-fluent.js       # Compiled sidebar navigation (LuCI module)
+│       │       ├── menu-veil.js       # Compiled sidebar navigation (LuCI module)
 │       │       └── view/
-│       │           └── fluent-config.js # Compiled configuration UI
-│       ├── ucode/template/themes/fluent/
+│       │           └── veil-config.js # Compiled configuration UI
+│       ├── ucode/template/themes/veil/
 │       │   ├── header.ut                # Main header template
 │       │   ├── header_login.ut          # Login page header
 │       │   ├── footer.ut                # Main footer
@@ -32,14 +32,14 @@ luci-theme-fluent/
 │       │   ├── out_header_login.ut      # Outer login header
 │       │   └── sysauth.ut               # Login/auth page
 │       ├── root/
-│       │   ├── etc/config/fluent        # Default UCI config
+│       │   ├── etc/config/veil        # Default UCI config
 │       │   ├── etc/uci-defaults/        # Theme registration and config setup
 │       │   └── usr/                     # Scripts, RPCD, ACL files
 │       ├── po/                          # Translation sources
 │       └── Makefile                     # OpenWrt package definition
 ├── src/
 │   ├── scss/
-│   │   ├── fluent.scss          # Main entry point (imports partials)
+│   │   ├── veil.scss          # Main entry point (imports partials)
 │   │   ├── _variables.scss      # Design tokens (Typography, Spacing, Radius, Brand ramps)
 │   │   ├── _mixins.scss         # Reusable patterns
 │   │   ├── _base.scss           # Reset & typography
@@ -49,9 +49,9 @@ luci-theme-fluent/
 │   │   └── overrides/           # Page-scoped overrides
 │   ├── web/
 │   │   └── resources/
-│   │       ├── menu-fluent.tsx  # Sidebar navigation TSX source
+│   │       ├── menu-veil.tsx  # Sidebar navigation TSX source
 │   │       └── view/
-│   │           └── fluent-config.tsx # Config UI TSX source
+│   │           └── veil-config.tsx # Config UI TSX source
 │   ├── script/                  # Build scripts (extract-ucode, generate-icons, etc.)
 │   └── rsbuild.config.ts        # Rsbuild configuration
 └── package.json                 # Project build tooling (pnpm workspace)
@@ -164,14 +164,14 @@ All server-side templates are written in ucode syntax:
 Ucode templates have automatic access to LuCI global properties: `theme`, `media`, `resource`, `node`, `dispatcher`, `version`, `ctx`.
 
 ### UCI Configuration Integration
-`header.ut` reads settings directly from UCI config `/etc/config/fluent` using ucode's `uci` cursor and dynamically injects them as inline CSS custom properties, allowing user customization of colors, radii, sidebar widths, and layout spacing at runtime.
+`header.ut` reads settings directly from UCI config `/etc/config/veil` using ucode's `uci` cursor and dynamically injects them as inline CSS custom properties, allowing user customization of colors, radii, sidebar widths, and layout spacing at runtime.
 
 ---
 
 ## Build System & Tooling
 
 The project uses **Rsbuild** (configured in `src/rsbuild.config.ts`) instead of standard Sass compilers. It builds two environments:
-1. **CSS environment** (`src/scss/fluent.scss`): Preprocesses SCSS files, inlines inline SVGs, and outputs CSS to `package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css`.
+1. **CSS environment** (`src/scss/veil.scss`): Preprocesses SCSS files, inlines inline SVGs, and outputs CSS to `package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css`.
 2. **JS environment** (`src/web/resources/`): Compiles React-like JSX/TSX views into OpenWrt-compatible LuCI modules using custom banner/footer plugins.
 
 ### Package Scripts

@@ -1,8 +1,8 @@
-# AGENTS.md - luci-theme-fluent Developer Guide
+# AGENTS.md - luci-theme-veil Developer Guide
 
 **FluentUI 2 theme for OpenWrt LuCI** — standalone repo (not monorepo). Built with SCSS, ucode templates, CSS custom properties for light/dark/auto theming.
 
-- **Repo**: `LazuliKao/luci-theme-fluent` (separate, not `luci-theme-argon`)
+- **Repo**: `LazuliKao/luci-theme-veil` (separate, not `luci-theme-argon`)
 - **Branch**: `openwrt-24.10`, `main`
 - **Targets**: OpenWrt 24.10.7 (opkg/ipk), OpenWrt 25.12.4 (apk)
 
@@ -12,7 +12,7 @@
 pnpm install          # install deps from root + src/ (pnpm workspace)
 pnpm run build        # compile SCSS + LuCI JS/TSX (runs "cd src && pnpm run build")
 pnpm run watch        # auto-rebuild both
-pnpm run lint         # Biome lint on package/luci-theme-fluent/htdocs/ + src/web/resources/
+pnpm run lint         # Biome lint on package/luci-theme-veil/htdocs/ + src/web/resources/
 pnpm run typecheck    # "cd src && tsc -p tsconfig.json --noEmit"
 ```
 
@@ -22,43 +22,43 @@ The project uses **Rsbuild** (not raw sass CLI) configured in `src/rsbuild.confi
 
 | Environment | Entry | Output | Notes |
 |---|---|---|---|
-| `css` | `src/scss/fluent.scss` | `package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css` | Sass via `@rsbuild/plugin-sass`, SVG inlining via `dataUriLimit: MAX_SAFE_INTEGER`. Custom plugin removes generated `fluent.js`. Minify: off. |
-| `js` | `src/web/resources/{menu-fluent.tsx, view/fluent-config.tsx}` | `package/luci-theme-fluent/htdocs/luci-static/resources/{menu-fluent.js, view/fluent-config.js}` | React JSX via `@lazulikao/luci-types`, LuCI `require` preamble via `BannerPlugin`, `return main;` footer. Minify: on (but splitChunks/runtimeChunk off). |
+| `css` | `src/scss/veil.scss` | `package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css` | Sass via `@rsbuild/plugin-sass`, SVG inlining via `dataUriLimit: MAX_SAFE_INTEGER`. Custom plugin removes generated `veil.js`. Minify: off. |
+| `js` | `src/web/resources/{menu-veil.tsx, view/veil-config.tsx}` | `package/luci-theme-veil/htdocs/luci-static/resources/{menu-veil.js, view/veil-config.js}` | React JSX via `@lazulikao/luci-types`, LuCI `require` preamble via `BannerPlugin`, `return main;` footer. Minify: on (but splitChunks/runtimeChunk off). |
 
 **Key rsbuild quirks**:
 
 - JS env has `rspack.BannerPlugin` prepending `"require baseclass"` / `"require ui"` and appending `return main;`.
-- CSS env has `RemoveEntryJsPlugin` that deletes `fluent.js` from output.
+- CSS env has `RemoveEntryJsPlugin` that deletes `veil.js` from output.
 - `splitChunks: false`, `runtimeChunk: false`, `minimize: false` in JS env.
 
 ## Project Structure
 
 ```
-luci-theme-fluent/
+luci-theme-veil/
 ├── package/
-│   └── luci-theme-fluent/
+│   └── luci-theme-veil/
 │       ├── htdocs/luci-static/
-│       │   ├── fluent/css/fluent.css       # Compiled CSS (NOT committed? check .gitignore)
+│       │   ├── fluent/css/veil.css       # Compiled CSS (NOT committed? check .gitignore)
 │       │   ├── fluent/background/          # User-uploaded backgrounds
 │       │   ├── fluent/fonts/               # Empty directory
 │       │   ├── fluent/icon/                # favicon.ico, icon-192.png, favicon-32.png, manifest.json
-│       │   ├── fluent/img/fluent.svg       # Theme logo
-│       │   └── resources/                  # Compiled JS: menu-fluent.js, view/fluent-config.js
-│       ├── ucode/template/themes/fluent/   # 6 ucode templates (header.ut, footer.ut, header_login.ut, footer_login.ut, out_header_login.ut, sysauth.ut)
+│       │   ├── fluent/img/veil.svg       # Theme logo
+│       │   └── resources/                  # Compiled JS: menu-veil.js, view/veil-config.js
+│       ├── ucode/template/themes/veil/   # 6 ucode templates (header.ut, footer.ut, header_login.ut, footer_login.ut, out_header_login.ut, sysauth.ut)
 │       ├── root/
-│       │   ├── etc/config/fluent           # Default UCI config (40+ options)
+│       │   ├── etc/config/veil           # Default UCI config (40+ options)
 │       │   ├── etc/uci-defaults/luci-fluent # Theme registration + default config initialization
 │       │   ├── usr/libexec/fluent/online_wallpaper  # Shell script: fetches Bing/Unsplash login backgrounds
-│       │   ├── usr/libexec/rpcd/luci.fluent        # RPC daemon: list/remove/rename background files
-│       │   ├── usr/share/luci/menu.d/luci-theme-fluent.json  # Menu registration for config view
-│       │   └── usr/share/rpcd/acl.d/luci-theme-fluent.json   # ACL permissions: fluent UCI + background file access
+│       │   ├── usr/libexec/rpcd/luci.veil        # RPC daemon: list/remove/rename background files
+│       │   ├── usr/share/luci/menu.d/luci-theme-veil.json  # Menu registration for config view
+│       │   └── usr/share/rpcd/acl.d/luci-theme-veil.json   # ACL permissions: fluent UCI + background file access
 │       ├── po/
-│       │   ├── templates/fluent.pot        # POT template (66 strings)
-│       │   └── zh_Hans/fluent.po           # Simplified Chinese translations
+│       │   ├── templates/veil.pot        # POT template (66 strings)
+│       │   └── zh_Hans/veil.po           # Simplified Chinese translations
 │       └── Makefile                        # OpenWrt package definition
 ├── src/
 │   ├── scss/
-│   │   ├── fluent.scss            # Entry point (47 @use imports)
+│   │   ├── veil.scss            # Entry point (47 @use imports)
 │   │   ├── _variables.scss        # Design tokens (157 lines: typography, spacing, radius, z-index, brand ramps)
 │   │   ├── _mixins.scss           # Responsive breakpoints, button/input/card/table/scrollbar mixins (394 lines)
 │   │   ├── _icons.scss            # 15 FluentUI SVG icons as SCSS variables, fluent-icon() + fluent-icon-content() mixins
@@ -80,15 +80,15 @@ luci-theme-fluent/
 │   ├── web/
 │   │   ├── index.ts               # Just declares baseclass + ui types
 │   │   └── resources/
-│   │       ├── menu-fluent.tsx     # Entry: renders sidebar nav + tab menus via LuCI menu API
+│   │       ├── menu-veil.tsx     # Entry: renders sidebar nav + tab menus via LuCI menu API
 │   │       ├── utils/              # 6 helpers: error-tooltips, poll-pause, slide-animations, select-dropdown, ifacebox-tooltip, theme-features
 │   │       └── view/
-│   │           ├── fluent-config.tsx     # Config UI (4 tabs: general/colors/animation/login)
+│   │           ├── veil-config.tsx     # Config UI (4 tabs: general/colors/animation/login)
 │   │           ├── shared.ts             # Color picker widget, transparency steps
 │   │           └── tabs/                 # {general, colors, animation, login}.ts — each registers section.taboption()
 │   ├── script/
 │   │   ├── extract-ucode.ts       # Bridge: scans package-local .ut files for `_('...')`, filters LuCI core strings, generates extra-strings.js
-│   │   ├── generate-icons.ts      # Generates favicon-32.png + icon-192.png from package-local fluent.svg
+│   │   ├── generate-icons.ts      # Generates favicon-32.png + icon-192.png from package-local veil.svg
 │   │   ├── fluent-icons.json      # Iconify mapping: SCSS var name → @iconify-json/fluent icon name
 │   │   └── translate.md           # AI translation prompt for luci-types i18n --translate (zh_Hans)
 │   └── rsbuild.config.ts, package.json, tsconfig.json
@@ -113,16 +113,16 @@ luci-theme-fluent/
 
 - **Syntax**: `{% %}` code, `{{ }}` output, `{# #}` comments
 - **Globals**: `theme`, `media`, `resource`, `node`, `dispatcher`, `version`, `ctx`
-- **UCI**: `import { cursor } from 'uci'` — `cfg.get_first('fluent', 'global', 'key') || 'default'`
+- **UCI**: `import { cursor } from 'uci'` — `cfg.get_first('veil', 'global', 'key') || 'default'`
 - **FS**: `import { access, glob } from 'fs'`
 - **System info**: `ubus.call('system', 'board')`
 - **Escape**: `entityencode()` or `pcdata()`
 - **Login page** (`sysauth.ut`): 2-step form (username → password), Microsoft dynamic canvas / Bing/Unsplash / custom backgrounds, video support, HTTPS redirect check
 - **Header** (`header.ut`): Injects 40+ CSS vars from UCI, dark mode detection + localStorage persistence, loading bar, view transitions API, theme toggle button
 
-## UCI Configuration (`/etc/config/fluent`)
+## UCI Configuration (`/etc/config/veil`)
 
-Available UCI options (set defaults in `package/luci-theme-fluent/root/etc/config/fluent` and `package/luci-theme-fluent/root/etc/uci-defaults/luci-fluent`):
+Available UCI options (set defaults in `package/luci-theme-veil/root/etc/config/veil` and `package/luci-theme-veil/root/etc/uci-defaults/luci-fluent`):
 
 | Group | Keys |
 |---|---|
@@ -137,8 +137,8 @@ Available UCI options (set defaults in `package/luci-theme-fluent/root/etc/confi
 ## i18n / Translation Pipeline
 
 ```bash
-pnpm run i18n:extract       # → package/luci-theme-fluent/po/templates/fluent.pot (66 strings)
-pnpm run i18n:export        # → package/luci-theme-fluent/po/zh_Hans/fluent.po (AI-translated via OpenAI)
+pnpm run i18n:extract       # → package/luci-theme-veil/po/templates/veil.pot (66 strings)
+pnpm run i18n:export        # → package/luci-theme-veil/po/zh_Hans/veil.po (AI-translated via OpenAI)
 pnpm run i18n:extract-ucode # Discover ucode-only translatable strings
 pnpm run i18n:build         # All three steps
 ```
@@ -158,33 +158,33 @@ pnpm run i18n:build         # All three steps
 
 **Nightly**: Creates pre-release tag named `nightly` with both ipk and apk packages.
 
-**SDK build** (`.github/workflows/build.sh`): Auto-discovers SDK tarball from `downloads.openwrt.org`, uses `sed` to replace git.openwrt.org with GitHub mirrors for faster feeds, only builds `package/luci-theme-fluent/compile`, collects `luci-theme-fluent*` + `luci-i18n-fluent*` packages.
+**SDK build** (`.github/workflows/build.sh`): Auto-discovers SDK tarball from `downloads.openwrt.org`, uses `sed` to replace git.openwrt.org with GitHub mirrors for faster feeds, only builds `package/luci-theme-veil/compile`, collects `luci-theme-veil*` + `luci-i18n-veil*` packages.
 
 ## Web Resources Architecture
 
-- **`menu-fluent.tsx`** — Main entry: renders sidebar nav (2-level) + tab menus via LuCI `ui.menu` API. Uses `baseclass.extend(module)` pattern. Initializes 6 utility features on load.
-- **`fluent-config.tsx`** — Config view: `L.view` subclass, 4 tabs registered via `section.tab()`. Reads/writes `uci.load("fluent")`.
+- **`menu-veil.tsx`** — Main entry: renders sidebar nav (2-level) + tab menus via LuCI `ui.menu` API. Uses `baseclass.extend(module)` pattern. Initializes 6 utility features on load.
+- **`veil-config.tsx`** — Config view: `L.view` subclass, 4 tabs registered via `section.tab()`. Reads/writes `uci.load("veil")`.
 - **TSX**: Uses `@lazulikao/luci-types` JSX import source (not standard React). JSX creates LuCI DOM elements.
 - **Built by**: Rsbuild with `@rsbuild/core` + `@rsbuild/plugin-sass` + `@rspack/core`.
 
 ## OpenWrt Packaging
 
-`package/luci-theme-fluent/Makefile` uses `luci.mk` build system. `LUCI_MINIFY_CSS:=0` prevents luci.mk from minifying (handled by rsbuild). Post-install registers theme via `uci set luci.themes.fluent=/luci-static/fluent`.
+`package/luci-theme-veil/Makefile` uses `luci.mk` build system. `LUCI_MINIFY_CSS:=0` prevents luci.mk from minifying (handled by rsbuild). Post-install registers theme via `uci set luci.themes.fluent=/luci-static/veil`.
 
 ## Key Constraints
 
 1. **JSX uses non-standard import**: `importSource: "@lazulikao/luci-types"` (not React). JSX elements are LuCI DOM nodes, not React components.
 2. **SCSS files excluded from Biome**: `biome.json` ignores `src/scss/**/*`.
-3. **RSBuild CSS output cleanup**: `RemoveEntryJsPlugin` prevents `fluent.js` from appearing in CSS output.
-4. **Po files in `package/luci-theme-fluent/po/` auto-processed**: OpenWrt `luci.mk` converts them to translation JSON at build time.
+3. **RSBuild CSS output cleanup**: `RemoveEntryJsPlugin` prevents `veil.js` from appearing in CSS output.
+4. **Po files in `package/luci-theme-veil/po/` auto-processed**: OpenWrt `luci.mk` converts them to translation JSON at build time.
 5. **Template entry**: `header.ut` handles both authenticated pages AND login page rendering (via `ctx.authsession` check).
-6. **`package/luci-theme-fluent/root/etc/config/fluent`** and **`package/luci-theme-fluent/root/etc/uci-defaults/luci-fluent`** are the authoritative source for default UCI config values.
+6. **`package/luci-theme-veil/root/etc/config/veil`** and **`package/luci-theme-veil/root/etc/uci-defaults/luci-fluent`** are the authoritative source for default UCI config values.
 
 ## Troubleshooting
 
 | Issue | Check |
 |---|---|
-| CSS not loading | `package/luci-theme-fluent/htdocs/luci-static/fluent/css/fluent.css` exists? |
+| CSS not loading | `package/luci-theme-veil/htdocs/luci-static/veil/css/veil.css` exists? |
 | Dark mode wrong | UCI `mode` set correctly? CSS vars injected? localStorage `fluent-theme` override? |
 | Build fails | `pnpm install` first. Rsbuild config in `src/rsbuild.config.ts`. SCSS lint via Biome (but ignores SCSS files). |
 | Template error | ucode: `{% %}` not `<% %>`, `{{ }}` not `<%= %>` |
