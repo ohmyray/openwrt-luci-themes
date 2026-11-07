@@ -12109,7 +12109,7 @@ body.login-page {
 
 .login-page {
   box-sizing: border-box !important;
-  background: radial-gradient(circle, #f3f4f6 0%, #d1d5db 100%) !important;
+  background: radial-gradient(circle at 50% 50%, var(--fluent-bg-page) 0%, var(--fluent-bg-active) 100%) !important;
   flex-direction: column !important;
   justify-content: flex-start !important;
   align-items: center !important;
@@ -14697,9 +14697,9 @@ body > div.main > div.main-right > header [data-theme="dark"] .theme-toggle:hove
   --fluent-input-bg-disabled: #393552;
   --fluent-input-bg-hover: #393552;
   --fluent-calendar-picker-invert: 1;
-  --fluent-btn-primary-bg: color-mix(in srgb, var(--fluent-primary) 65%, #000);
-  --fluent-btn-primary-bg-hover: color-mix(in srgb, var(--fluent-primary) 75%, #000);
-  --fluent-btn-primary-bg-active: color-mix(in srgb, var(--fluent-primary) 50%, #000);
+  --fluent-btn-primary-bg: var(--fluent-primary);
+  --fluent-btn-primary-bg-hover: var(--fluent-primary-hover);
+  --fluent-btn-primary-bg-active: var(--fluent-primary-active);
   --fluent-btn-secondary-bg: #2a273f;
   --fluent-btn-secondary-bg-hover: #393552;
   --fluent-btn-secondary-bg-active: #232136;

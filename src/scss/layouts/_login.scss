@@ -43,7 +43,7 @@ body.login-page {
   box-sizing: border-box !important;
 
   // Microsoft-style radial gradient background
-  background: radial-gradient(circle at 50% 50%, #f3f4f6 0%, #d1d5db 100%) !important;
+  background: radial-gradient(circle at 50% 50%, var(--fluent-bg-page) 0%, var(--fluent-bg-active) 100%) !important;
 
   // ============================================================
   // BACKGROUND LAYERS (Static Image / Video)

@@ -598,7 +598,7 @@ const FLUENT_DEFAULTS = {
     control_height: "32",
     sidebar_width: "260",
     header_height: "48",
-    login_bg: "microsoft",
+    login_bg: "none",
     blur: "40",
     transparency: "0.8",
     blur_dark: "20",

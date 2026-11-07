@@ -73,9 +73,9 @@
   --fluent-calendar-picker-invert: 1;
 
   // Button
-  --fluent-btn-primary-bg: color-mix(in srgb, var(--fluent-primary) 65%, #000000); // Brand tint20
-  --fluent-btn-primary-bg-hover: color-mix(in srgb, var(--fluent-primary) 75%, #000000); // Brand tint30
-  --fluent-btn-primary-bg-active: color-mix(in srgb, var(--fluent-primary) 50%, #000000); // Brand tint40
+  --fluent-btn-primary-bg: var(--fluent-primary); // Brand tint20
+  --fluent-btn-primary-bg-hover: var(--fluent-primary-hover); // Brand tint30
+  --fluent-btn-primary-bg-active: var(--fluent-primary-active); // Brand tint40
   --fluent-btn-secondary-bg: #2a273f;
   --fluent-btn-secondary-bg-hover: #393552;
   --fluent-btn-secondary-bg-active: #232136;

@@ -86,7 +86,7 @@
 
     if (login_bg === 'bing') {
       try {
-        let proc = popen('/usr/libexec/fluent/online_wallpaper');
+        let proc = popen('/usr/libexec/veil/online_wallpaper');
         let picurl = proc ? trim(proc.read('all')) : '';
         if (proc)
           proc.close();

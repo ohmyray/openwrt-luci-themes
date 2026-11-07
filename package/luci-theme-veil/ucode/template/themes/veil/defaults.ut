@@ -16,7 +16,7 @@
   defaults.control_height = "32";
   defaults.sidebar_width = "260";
   defaults.header_height = "48";
-  defaults.login_bg = "microsoft";
+  defaults.login_bg = "none";
   defaults.blur = "40";
   defaults.transparency = "0.8";
   defaults.blur_dark = "20";
